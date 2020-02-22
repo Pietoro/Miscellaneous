@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+body {
+  margin: 0;
+  background-color: #12211f;
+  color: #66ccbb;
+  font-family: 'Montserrat', 'Calibri';
+  font-size: 28px;
+}
+
+a:link, a:visited, a:active {
+  color: #66ccbb;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ccaa66;
+}
+/*# sourceMappingURL=main.css.map */
