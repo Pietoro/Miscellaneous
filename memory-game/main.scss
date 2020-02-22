@@ -60,12 +60,20 @@ main {
         filter: brightness(70%);
         transition: all .2s ease-in-out;
 
-        &:hover {
+        &:hover, &.revealed {
           border-color: $font-col-secondary;
           filter: brightness(100%);
+        }
 
+        &.revealed {
+          cursor: default;
         }
       }
+      .winner {
+        color: $font-col-secondary; 
+        font-size: 64px;
+      }
+
       .score {
         margin-top: 5px;
         letter-spacing: 2px;

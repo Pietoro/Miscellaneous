@@ -61,10 +61,19 @@ main .board .card {
   transition: all .2s ease-in-out;
 }
 
-main .board .card:hover {
+main .board .card:hover, main .board .card.revealed {
   border-color: #ccaa66;
   -webkit-filter: brightness(100%);
           filter: brightness(100%);
+}
+
+main .board .card.revealed {
+  cursor: default;
+}
+
+main .board .winner {
+  color: #ccaa66;
+  font-size: 64px;
 }
 
 main .board .score {
