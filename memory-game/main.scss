@@ -1,13 +1,14 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Fondamento&display=swap');
 
-$font-col-primary: hsl(170,50%,60%);
+$font-col-primary: hsl(165,50%,45%);
 $font-col-secondary: hsl(40,50%,60%);
+$border-col: hsl(165,50%,40%);
 
 body {
   margin: 0;
   background-color: hsl(170,30%,10%);
   color: $font-col-primary;
-  font-family:'Montserrat', 'Calibri';
+  font-family: 'Fondamento', 'Calibri';
   font-size: 28px;
 }
 
@@ -19,5 +20,58 @@ a {
   &:hover {
     color: $font-col-secondary
   }
+}
+
+header {
+  text-align: center;
+  margin-bottom: 25px;
+  h1 {
+    font-size: 64px;
+    letter-spacing: 3px;
+    margin-top: 20px;
+    margin-bottom: 0;
+  }
+
+  p {
+    font-size: 36px;
+    margin-top: 5px;
+    letter-spacing: 2px;
+  }
+}
+
+main {
+  box-sizing: border-box;
+
+  .board {
+      width:600px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+
+      .card {
+        width: 125px;
+        height: 125px;
+        display: inline-block;
+        margin: 3px;
+        background-image: url('./img/karta.png');
+        border: 4px solid $border-col;
+        border-radius: 4px;
+        cursor: pointer;
+        filter: brightness(70%);
+        transition: all .2s ease-in-out;
+
+        &:hover {
+          border-color: $font-col-secondary;
+          filter: brightness(100%);
+
+        }
+      }
+      .score {
+        margin-top: 5px;
+        letter-spacing: 2px;
+      }
+
+  }
+
 
 }
