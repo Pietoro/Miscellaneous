@@ -1,0 +1,39 @@
+body {
+  font-family: sans-serif;
+}
+
+.board {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 300px;
+  background: #e6e6e6;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  -ms-grid-rows: (100px)[3];
+      grid-template-rows: repeat(3, 100px);
+  grid-gap: 3px;
+  display: -ms-grid;
+  display: grid;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.box {
+  background: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 2rem;
+  color: #333333;
+}
+
+.box:hover {
+  background: #f2f2f2;
+}
+/*# sourceMappingURL=style.css.map */

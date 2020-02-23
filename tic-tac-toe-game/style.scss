@@ -1,0 +1,28 @@
+body { font-family: sans-serif;}
+
+.board {
+    box-sizing: border-box;
+    width: 300px;
+    background: hsl(0,0%,90%);
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,100px);
+    grid-gap: 3px;
+    display: grid;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.box {
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: hsl(0,0%,20%);
+
+    &:hover {
+        background: hsl(0,0%,95%)
+    }
+
+}
+
