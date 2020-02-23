@@ -1,4 +1,4 @@
-body { font-family: sans-serif;}
+body { font-family: Calibri;}
 
 .board {
     box-sizing: border-box;
@@ -19,9 +19,18 @@ body { font-family: sans-serif;}
     align-items: center;
     font-size: 2rem;
     color: hsl(0,0%,20%);
+    
 
     &:hover {
         background: hsl(0,0%,95%)
+    }
+
+    &.o::before {
+        content: 'o';
+    }
+
+    &.x::before {
+        content: 'x'
     }
 
 }
