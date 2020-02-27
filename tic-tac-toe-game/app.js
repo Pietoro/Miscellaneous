@@ -1,7 +1,7 @@
 const PLAYER1 = 'o';
 const PLAYER2 = 'x';
 let round = 1;
-const board = [
+let board = [
   ['','',''],
   ['','',''],
   ['','','']
@@ -17,6 +17,9 @@ const boxes = [...document.querySelectorAll('.box')];
 boxes.forEach(box => box.addEventListener('click',pick));
 
 let lock = false;
+
+const btn = document.querySelector('.btn-new-game');
+btn.addEventListener('click', newGame);
 
 function pick(event) {
   //console.log(event);
@@ -61,5 +64,17 @@ function check() {
     }
   });
   return winner;
+}
+
+function newGame() {
+  lock = false;
+  round = 1;
+  boxes.forEach(box => box.classList.remove('o', 'x'));
+  document.querySelector('.winner').innerHTML = '';
+  board = [
+    ['','',''],
+    ['','',''],
+    ['','','']
+  ];
 }
 

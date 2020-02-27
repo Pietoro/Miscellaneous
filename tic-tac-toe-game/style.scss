@@ -1,13 +1,24 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
-body { 
-    font-family: Montserrat, Calibri;
-}
+body { font-family: Montserrat, Calibri; }
 
 header { 
-    font-size: 36px;
+    font-size: 42px;
     text-align: center;
-    color: hsl(0,0%,20%)
+    color: hsl(0,0%,20%);
+}
+
+.btn-new-game {
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    background-color: hsl(0,0%,60%);
+    padding: 0.5em 1em;
+    letter-spacing: 1px;
+    display: block;
+    margin: 2em auto 1em auto;
+    color: white;
+    cursor: pointer;
 }
 
 .board {
@@ -30,7 +41,6 @@ header {
     font-size: 3rem;
     color: hsl(0,0%,20%);
     transition: all 0.3s ease;
-    
 
     &:hover {
         background: hsl(0,0%,95%);
