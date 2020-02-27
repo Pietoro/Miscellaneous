@@ -54,11 +54,12 @@ function check() {
   result.forEach((field,index) => moves[field] ? moves[field].push(index) : null);
   combinations.forEach(combination => {
     if(combination.every(number => moves[PLAYER1].includes(number))) {
-      winner = 'Winner: Player 1';
+      winner = 'Winner: \u25EF';
     }
     if(combination.every(number => moves[PLAYER2].includes(number))) {
-      winner = 'Winner: Player 2';
+      winner = 'Winner: \u2715';
     }
   });
   return winner;
 }
+

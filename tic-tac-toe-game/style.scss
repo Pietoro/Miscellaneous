@@ -1,15 +1,25 @@
-body { font-family: Calibri;}
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+body { 
+    font-family: Montserrat, Calibri;
+}
+
+header { 
+    font-size: 36px;
+    text-align: center;
+    color: hsl(0,0%,20%)
+}
 
 .board {
+    margin: 3em auto 0 auto;
     box-sizing: border-box;
     width: 300px;
-    background: hsl(0,0%,90%);
+    background: hsl(0,0%,70%);
+    cursor: pointer;
+    display: grid;
+    grid-gap: 3px;
     grid-template-columns: repeat(3,1fr);
     grid-template-rows: repeat(3,100px);
-    grid-gap: 3px;
-    display: grid;
-    border: 1px solid black;
-    cursor: pointer;
 }
 
 .box {
@@ -17,21 +27,27 @@ body { font-family: Calibri;}
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2rem;
+    font-size: 3rem;
     color: hsl(0,0%,20%);
+    transition: all 0.3s ease;
     
 
     &:hover {
-        background: hsl(0,0%,95%)
+        background: hsl(0,0%,95%);
+        transition: all 0.3s ease-in-out;
     }
 
     &.o::before {
-        content: 'o';
+        content: '\25EF';
     }
 
     &.x::before {
-        content: 'x'
+        content: '\2715';
     }
-
 }
 
+.winner {
+    text-align: center;
+    margin-top: 2em;
+    font-size: 1.5em;
+}

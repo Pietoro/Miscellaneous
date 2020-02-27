@@ -1,22 +1,28 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: Montserrat, Calibri;
+}
+
+header {
+  font-size: 36px;
+  text-align: center;
+  color: #333333;
 }
 
 .board {
+  margin: 3em auto 0 auto;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   width: 300px;
-  background: #e6e6e6;
+  background: #b3b3b3;
+  cursor: pointer;
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 3px;
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
   -ms-grid-rows: (100px)[3];
       grid-template-rows: repeat(3, 100px);
-  grid-gap: 3px;
-  display: -ms-grid;
-  display: grid;
-  border: 1px solid black;
-  cursor: pointer;
 }
 
 .box {
@@ -30,19 +36,29 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 2rem;
+  font-size: 3rem;
   color: #333333;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .box:hover {
   background: #f2f2f2;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .box.o::before {
-  content: 'o';
+  content: '\25EF';
 }
 
 .box.x::before {
-  content: 'x';
+  content: '\2715';
+}
+
+.winner {
+  text-align: center;
+  margin-top: 2em;
+  font-size: 1.5em;
 }
 /*# sourceMappingURL=style.css.map */
