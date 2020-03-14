@@ -45,7 +45,8 @@ const arrayAllNegative = (arr) => arr
 const arrayFunctions = {
   arraySum, // ~~ arraySum: arraySum
   arrayProduct,
-  arrayAllNegative
+  arrayAllNegative,
+  arraySumOfSquaresOfPositive
 };
 
 module.exports = arrayFunctions;
