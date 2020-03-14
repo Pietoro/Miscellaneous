@@ -18,9 +18,13 @@ const arraySum = (arr) => arr.reduce((total, el) => total + el, 0);
 // arrayProduct: (arr: number[]) => number
 // return product of all elements of the array and 1 if the array is empty
 
+function arrayProduct(arr) {
+  return 0;
+}
 
 const arrayFunctions = {
-  arraySum // ~~ arraySum: arraySum
+  arraySum, // ~~ arraySum: arraySum
+  arrayProduct
 };
 
 module.exports = arrayFunctions;
