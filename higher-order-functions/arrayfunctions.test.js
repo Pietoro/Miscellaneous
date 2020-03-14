@@ -70,3 +70,22 @@ test('Should return an array of the consecutive sums', () => {
   const array3 = [];
   expect(arrayProgressiveSum(array3)).toEqual([0]);
 });
+
+test('Should return product of values of fractions', () => {
+  const array1 = [
+    {nom: 1, denom: 2},
+    {nom: 2, denom: 3},
+    {nom: 3, denom: 4},
+  ];
+  expect(arrayProductOfFractions(array1)).toBeCloseTo(0.25);
+
+  const array2 = [
+    {nom: 1, denom: 2},
+    {nom: 2, denom: 0},
+    {nom: 3, denom: 4},
+  ];
+  expect(arrayProductOfFractions(array2)).toBeNaN();
+
+  const array3 = [];
+  expect(arrayProductOfFractions(array3)).toBe(1);
+});
