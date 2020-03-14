@@ -46,6 +46,10 @@ const arraySumOfSquaresOfPositive = (arr) => arr
   .map((el) => el * el)
   .reduce((total, el) => total + el, 0);
 
+// Task
+// arrayProgressiveSum: (arr: number[]) => number[]
+// returns the array [0, arr[0], arr[0] + arr[1], ...]
+
 const arrayFunctions = {
   arraySum, // ~~ arraySum: arraySum
   arrayProduct,
