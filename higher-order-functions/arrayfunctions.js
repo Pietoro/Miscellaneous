@@ -8,9 +8,11 @@
   return sum;
 }*/
 
-function arraySum(arr) {
+/* function arraySum(arr) {
   return arr.reduce((total, el) => total + el, 0);
-}
+} */
+
+const arraySum = (arr) => arr.reduce((total, el) => total + el, 0);
 
 const arrayFunctions = {
   arraySum // ~~ arraySum: arraySum
