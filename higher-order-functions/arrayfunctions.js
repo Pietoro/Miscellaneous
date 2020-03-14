@@ -33,9 +33,14 @@ const arrayProduct = (arr) => arr.reduce((total, el) => total * el, 1);
 // returns true when all elements of the array are negative and false otherwise
 // if array is empty returns true
 
+const arrayAllNegative = (arr) => arr
+  .map((el) => el < 0)
+  .reduce((total, el) => total && el, true);
+
 const arrayFunctions = {
   arraySum, // ~~ arraySum: arraySum
-  arrayProduct
+  arrayProduct,
+  arrayAllNegative
 };
 
 module.exports = arrayFunctions;
