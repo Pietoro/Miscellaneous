@@ -55,3 +55,18 @@ test('Should return sum of squares of all positive numbers in the array and 0 fo
     const array5 = [4,3,2,1];
     expect(arraySumOfSquaresOfPositive(array5)).toBe(30);
 });
+
+test('Should return an array of the consecutive sums', () => {
+  const array1 = [1,2,3,4];
+  const result1 = arrayProgressiveSum(array1);
+  expect(result1).toEqual([0,1,3,6,10]);
+  expect(result1.length).toBe(array1.length + 1);
+
+  const array2 = [-1,2,-3,0,1];
+  const result2 = arrayProgressiveSum(array2);
+  expect(result2).toEqual([0,-1,1,-2,-2,-1]);
+  expect(result2.length).toBe(array2.length + 1);
+
+  const array3 = [];
+  expect(arrayProgressiveSum(array3)).toEqual([0]);
+});
