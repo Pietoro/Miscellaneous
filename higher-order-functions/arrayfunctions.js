@@ -19,7 +19,11 @@ const arraySum = (arr) => arr.reduce((total, el) => total + el, 0);
 // return product of all elements of the array and 1 if the array is empty
 
 function arrayProduct(arr) {
-  return 0;
+  let product = 1;
+  for (const el of arr) {
+    product *= el;
+  }
+  return product;
 }
 
 const arrayFunctions = {
