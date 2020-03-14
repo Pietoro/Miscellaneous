@@ -50,11 +50,15 @@ const arraySumOfSquaresOfPositive = (arr) => arr
 // arrayProgressiveSum: (arr: number[]) => number[]
 // returns the array [0, arr[0], arr[0] + arr[1], ...]
 
+const arrayProgressiveSum = (arr) => arr
+  .reduce((total, el) => total.concat([el+total[total.length-1]]), [0])
+
 const arrayFunctions = {
   arraySum, // ~~ arraySum: arraySum
   arrayProduct,
   arrayAllNegative,
-  arraySumOfSquaresOfPositive
+  arraySumOfSquaresOfPositive,
+  arrayProgressiveSum
 };
 
 module.exports = arrayFunctions;

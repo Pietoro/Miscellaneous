@@ -1,6 +1,6 @@
 const arrayFunctions = require('./arrayfunctions');
 //const arraySum = arrayFunctions.arraySum; // const { arraySum } = arrayFunctions;
-const {arraySum, arrayProduct, arrayAllNegative, arraySumOfSquaresOfPositive} = arrayFunctions;
+const {arraySum, arrayProduct, arrayAllNegative, arraySumOfSquaresOfPositive, arrayProgressiveSum} = arrayFunctions;
 
 test('Should return sum of all array elements', () => {
   const array1 = [1,2,3];
