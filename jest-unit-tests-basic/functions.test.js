@@ -1,5 +1,9 @@
 const functions = require('./functions');
 
+beforeEach(() => console.log('Start test'));
+afterEach(() => console.log('End test'));
+
+
 test('The sum of 2 and 2 is equal to 4', () => {
     expect(functions.add(2,2)).toBe(4);
 });
