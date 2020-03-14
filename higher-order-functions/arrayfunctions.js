@@ -37,6 +37,11 @@ const arrayAllNegative = (arr) => arr
   .map((el) => el < 0)
   .reduce((total, el) => total && el, true);
 
+// Task
+// arraySumOfSquaresOfPositive; (arr: number[]) => number
+// return sum of squares of all positive numbers in the array and 0 for empty array
+
+
 const arrayFunctions = {
   arraySum, // ~~ arraySum: arraySum
   arrayProduct,
