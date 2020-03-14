@@ -14,6 +14,11 @@
 
 const arraySum = (arr) => arr.reduce((total, el) => total + el, 0);
 
+// Task
+// arrayProduct: (arr: number[]) => number
+// return product of all elements of the array and 1 if the array is empty
+
+
 const arrayFunctions = {
   arraySum // ~~ arraySum: arraySum
 };
