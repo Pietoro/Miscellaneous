@@ -53,5 +53,5 @@ test('Should return sum of squares of all positive numbers in the array and 0 fo
     const array4 = [-3,-2,-1];
     expect(arraySumOfSquaresOfPositive(array4)).toBe(0);
     const array5 = [4,3,2,1];
-    expect(arraySumOfSquaresOfPositive(array1)).toBe(30);
+    expect(arraySumOfSquaresOfPositive(array5)).toBe(30);
 });
