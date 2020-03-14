@@ -56,7 +56,12 @@ const arraySumOfSquaresOfPositive = (arr) => arr
 const arrayProgressiveSum = (arr) => arr
   .reduce((total, el) => [...total, el+total[total.length-1]], [0]);
 
-  const arrayFunctions = {
+// Task
+// arrayProductOfFractions: (arr: Fraction[]) => number | NaN
+// where: interface Fraction { nom: number; denom: number; }
+// return product of values of fractions
+
+const arrayFunctions = {
   arraySum, // ~~ arraySum: arraySum
   arrayProduct,
   arrayAllNegative,
