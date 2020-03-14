@@ -1,6 +1,8 @@
 const arrayFunctions = require('./arrayfunctions');
 //const arraySum = arrayFunctions.arraySum; // const { arraySum } = arrayFunctions;
-const {arraySum, arrayProduct, arrayAllNegative, arraySumOfSquaresOfPositive, arrayProgressiveSum} = arrayFunctions;
+const {arraySum, arrayProduct, arrayAllNegative, 
+  arraySumOfSquaresOfPositive, arrayProgressiveSum, 
+  arrayProductOfFractions} = arrayFunctions;
 
 test('Should return sum of all array elements', () => {
   const array1 = [1,2,3];
@@ -84,7 +86,8 @@ test('Should return product of values of fractions', () => {
     {nom: 2, denom: 0},
     {nom: 3, denom: 4},
   ];
-  expect(arrayProductOfFractions(array2)).toBeNaN();
+  expect(arrayProductOfFractions(array2)).toBe(Infinity);
+ 
 
   const array3 = [];
   expect(arrayProductOfFractions(array3)).toBe(1);

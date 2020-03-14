@@ -57,16 +57,21 @@ const arrayProgressiveSum = (arr) => arr
   .reduce((total, el) => [...total, el+total[total.length-1]], [0]);
 
 // Task
-// arrayProductOfFractions: (arr: Fraction[]) => number | NaN
+// arrayProductOfFractions: (arr: Fraction[]) => number
 // where: interface Fraction { nom: number; denom: number; }
 // return product of values of fractions
+
+const arrayProductOfFractions = (arr) => arr
+  .map((el) => el.nom / el.denom)
+  .reduce((total,el) => total * el, 1);
 
 const arrayFunctions = {
   arraySum, // ~~ arraySum: arraySum
   arrayProduct,
   arrayAllNegative,
   arraySumOfSquaresOfPositive,
-  arrayProgressiveSum
+  arrayProgressiveSum,
+  arrayProductOfFractions
 };
 
 module.exports = arrayFunctions;
