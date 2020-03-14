@@ -65,6 +65,18 @@ const arrayProductOfFractions = (arr) => arr
   .map((el) => el.nom / el.denom)
   .reduce((total,el) => total * el, 1);
 
+// Task
+// arrayMap<T1, T2>: (arr: T1[], fun: (x: T1) => T2) => T2[]
+// And
+// arrayFilter<T>: (arr: T[], fun: (x: T) => boolean) => T[]
+// use only reduce
+
+const arrayMap = (arr,fun) => arr
+  .reduce((total, el) => [...total,fun(el)], []);
+
+const arrayFilter = (arr, fun) => arr
+  .reduce((total, el) => fun(el) ? [...total,el] : total, []);
+
 const arrayFunctions = {
   arraySum, // ~~ arraySum: arraySum
   arrayProduct,
