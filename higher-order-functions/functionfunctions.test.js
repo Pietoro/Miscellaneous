@@ -13,4 +13,15 @@ describe('Testing constFunc',() => {
   });
 });
 
-
+describe('Testing composeTwo', () => {
+  each([
+    [(x) => (2*x-1),(y) => (y>0), [7,1,0,0.5],[true,true,false,false]],
+    [(x) => (2 * x),(y) => (y * 3), [0,1,4],[0,6,24]]
+  ]).test('Should return a composition of two functions', 
+    (first,second, input,expected) => {
+      const composed = composeTwo(first,second);
+      input.forEach((x, index) => {
+        expect(composed(x)).toBe(expected[index]);
+      });
+    });
+});
