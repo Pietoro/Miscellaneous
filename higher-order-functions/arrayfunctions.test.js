@@ -116,7 +116,8 @@ describe('Testing arrayArgMin', () => {
     [[-2,-5,1],1],
     [[3,0,8,5,2],1],
     [[2,3,3,1],3],
-    [[5],0]
+    [[5],0],
+    [[1,4,0,0,4,0,1],2]
   ]).test('Should return the the index of the smallest number in an array', (args, expected) => {
     expect(arrayArgMin(args)).toBe(expected);
   });
