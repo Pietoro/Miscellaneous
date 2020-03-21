@@ -42,6 +42,12 @@ const arrayMax = (arr) => ((arr.length === 0)
 // returns the first index of the smallest element in the array
 // if the array is empty return undefined
 
+const arrayArgMin = (arr) => ((arr.length === 0)
+  ? undefined
+  : arr.reduce((total,el,index) => arr[total] > el ? index : total,0)
+);
+
+
 // Task
 // arrayAllNegative: (arr: number[]) => boolean
 // returns true when all elements of the array are negative and false otherwise
