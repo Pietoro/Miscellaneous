@@ -7,3 +7,12 @@
 };*/
 
 export const constFunc = (c) => ((x) => c);
+
+// Task
+// composeTwo<T1,T2,T3>: (first: (x: T1) => T2, second: (y: T2) => T3) => ((x: T1) => T3)
+// returns a functions that:
+// - takes the argument and gives it to the first
+// - takes the output of the first and gives it to the second
+// - returns the output of the second
+
+
