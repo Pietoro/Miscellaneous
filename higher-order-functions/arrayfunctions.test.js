@@ -1,8 +1,9 @@
 import arrayFunctions from './arrayfunctions';
+import each from 'jest-each';
 //const arraySum = arrayFunctions.arraySum; // const { arraySum } = arrayFunctions;
 const {arraySum, arrayProduct, arrayAllNegative, 
   arraySumOfSquaresOfPositive, arrayProgressiveSum, 
-  arrayProductOfFractions} = arrayFunctions;
+  arrayProductOfFractions, arrayMax} = arrayFunctions;
 
 test('Should return sum of all array elements', () => {
   const array1 = [1,2,3];
@@ -91,4 +92,24 @@ test('Should return product of values of fractions', () => {
 
   const array3 = [];
   expect(arrayProductOfFractions(array3)).toBe(1);
+});
+
+describe('Testing arrayMax', () => {
+  test('arrayMax should exist', () => {
+    expect(arrayMax).toExist();
+  });
+  
+  each([
+    [[1,2,3],3],
+    [[-2,-5,1],1],
+    [[3,0,8,5,2],8],
+    [[2,3,3,1],3],
+    [[5],5]
+  ]).test('Should return the bigest number in an array', (args, expected) => {
+    expect(arrayMax(args)).toBe(expected);
+  });
+
+  test('Should return undefined for an empty array', () => {
+    expect(arrayMax([])).toBeUndefined();
+  });
 });
