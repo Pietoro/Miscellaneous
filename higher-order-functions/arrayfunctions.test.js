@@ -1,4 +1,4 @@
-const arrayFunctions = require('./arrayfunctions');
+import arrayFunctions from './arrayfunctions';
 //const arraySum = arrayFunctions.arraySum; // const { arraySum } = arrayFunctions;
 const {arraySum, arrayProduct, arrayAllNegative, 
   arraySumOfSquaresOfPositive, arrayProgressiveSum, 

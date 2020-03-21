@@ -77,7 +77,7 @@ const arrayMap = (arr,fun) => arr
 const arrayFilter = (arr, fun) => arr
   .reduce((total, el) => fun(el) ? [...total,el] : total, []);
 
-const arrayFunctions = {
+export default {
   arraySum, // ~~ arraySum: arraySum
   arrayProduct,
   arrayAllNegative,
@@ -85,5 +85,3 @@ const arrayFunctions = {
   arrayProgressiveSum,
   arrayProductOfFractions
 };
-
-module.exports = arrayFunctions;
