@@ -95,10 +95,6 @@ test('Should return product of values of fractions', () => {
 });
 
 describe('Testing arrayMax', () => {
-  test('arrayMax should exist', () => {
-    expect(arrayMax).toExist();
-  });
-  
   each([
     [[1,2,3],3],
     [[-2,-5,1],1],

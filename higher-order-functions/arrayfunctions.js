@@ -33,6 +33,9 @@ const arrayProduct = (arr) => arr.reduce((total, el) => total * el, 1);
 // returns the bigest element in the array
 // if the array is empty returns undefined
 
+const arrayMax = (arr) => ((arr.length === 0) 
+  ? undefined 
+  : arr.reduce((total, el) => total < el ? el : total));
 
 
 // Task
