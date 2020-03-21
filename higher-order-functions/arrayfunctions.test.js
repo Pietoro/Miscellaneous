@@ -3,7 +3,7 @@ import each from 'jest-each';
 //const arraySum = arrayFunctions.arraySum; // const { arraySum } = arrayFunctions;
 const {arraySum, arrayProduct, arrayAllNegative, 
   arraySumOfSquaresOfPositive, arrayProgressiveSum, 
-  arrayProductOfFractions, arrayMax} = arrayFunctions;
+  arrayProductOfFractions, arrayMax, arrayArgMin} = arrayFunctions;
 
 test('Should return sum of all array elements', () => {
   const array1 = [1,2,3];
@@ -107,5 +107,21 @@ describe('Testing arrayMax', () => {
 
   test('Should return undefined for an empty array', () => {
     expect(arrayMax([])).toBeUndefined();
+  });
+});
+
+describe('Testing arrayArgMin', () => {
+  each([
+    [[1,2,3],0],
+    [[-2,-5,1],1],
+    [[3,0,8,5,2],1],
+    [[2,3,3,1],3],
+    [[5],0]
+  ]).test('Should return the the index of the smallest number in an array', (args, expected) => {
+    expect(arrayArgMin(args)).toBe(expected);
+  });
+
+  test('Should return undefined for an empty array', () => {
+    expect(arrayArgMin([])).toBeUndefined();
   });
 });

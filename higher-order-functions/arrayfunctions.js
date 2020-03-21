@@ -98,5 +98,6 @@ export default {
   arraySumOfSquaresOfPositive,
   arrayProgressiveSum,
   arrayProductOfFractions,
-  arrayMax
+  arrayMax,
+  arrayArgMin
 };
