@@ -22,3 +22,8 @@ export const constFunc = (c) => ((x) => c);
 
 export const composeTwo = (first, second) => 
   ((x) => second(first(x)));
+
+const identity = (x) => x;
+
+const composeThem = (...funcs) => funcs
+  .reduce((total, func) => composeTwo(total,func), identity);
