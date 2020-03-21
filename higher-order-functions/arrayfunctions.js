@@ -29,6 +29,13 @@ const arraySum = (arr) => arr.reduce((total, el) => total + el, 0);
 const arrayProduct = (arr) => arr.reduce((total, el) => total * el, 1);
 
 // Task
+// arrayMax: (arr: number[]) => number | undefined
+// returns the bigest element in the array
+// if the array is empty returns undefined
+
+
+
+// Task
 // arrayAllNegative: (arr: number[]) => boolean
 // returns true when all elements of the array are negative and false otherwise
 // if array is empty returns true
