@@ -15,7 +15,10 @@ export const constFunc = (c) => ((x) => c);
 // - takes the output of the first and gives it to the second
 // - returns the output of the second
 
-export const composeTwo = (first, second) => function(x) {
+/*export const composeTwo = (first, second) => function(x) {
   const y = first(x);
   return second(y);
-};
+};*/
+
+export const composeTwo = (first, second) => 
+  ((x) => second(first(x)));
