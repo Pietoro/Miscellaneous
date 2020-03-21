@@ -1,5 +1,5 @@
 import each from "jest-each";
-import {constFunc} from './functionfunctions';
+import {constFunc, composeTwo} from './functionfunctions';
 
 describe('Testing constFunc',() => {
   each([
