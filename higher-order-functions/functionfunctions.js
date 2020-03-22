@@ -50,4 +50,10 @@ export const iterateIt = (func, times) => {
 // timeIt<T1,T2>: (func: (x: T1) => T2) => ((x: T1) => { time: number, result: T2 })
 // decorates the function with time measurement
 
-
+export const timeIt = (func) => ((x) => {
+  const start = new Date().getTime();
+  const result = func(x); 
+  const finish = new Date().getTime();
+  const time = finish - start;
+  return {result, time};
+});
