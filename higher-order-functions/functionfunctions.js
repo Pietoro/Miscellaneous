@@ -25,5 +25,12 @@ export const composeTwo = (first, second) =>
 
 const identity = (x) => x;
 
-const composeThem = (...funcs) => funcs
+export const composeThem = (...funcs) => funcs
   .reduce((total, func) => composeTwo(total,func), identity);
+
+// Task
+// iterateIt<T>: (func: (x: T) => T, times: number)
+// returns a function that for `times` times
+// takes the argument and gives it back to itself as an argument
+// for `times` = 0, returns identity function
+// for `times` < 0, returns undefined
