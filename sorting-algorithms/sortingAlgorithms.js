@@ -50,8 +50,21 @@ const selectionSort = (arr) => {
   return result;
 }
 
+// quickSort
+// implements quick sort algorithm
+
+const quickSort = (arr) => {
+  if(arr.length === 0 || arr.length === 1) return arr;
+  const head = arr[0];
+  const tail = arr.slice(1,arr.length);
+  const smaller = tail.filter((x) => x <= head);
+  const greater = tail.filter((x) => x > head);
+  return [...quickSort(smaller),head,...quickSort(greater)];
+};
+
 export default {
   bubbleSort,
   insertionSort,
-  selectionSort
+  selectionSort,
+  quickSort
 };
