@@ -1,4 +1,4 @@
-import sortingAlgorithms, {swapElements} from './sortingAlgorithms';
+import sortingAlgorithms, {swapElements, mergeTwoSorted} from './sortingAlgorithms';
 import each from 'jest-each';
 
 for (const key in sortingAlgorithms) {
@@ -24,5 +24,16 @@ describe('Testing swapElements', () => {
     const array = input;
     swapElements(array,i,j);
     expect(array).toEqual(expected);
+  });
+});
+
+describe('Testing mergeTwoSorted', () => {
+  each([
+    [[1,2,3],[4,5,6],[1,2,3,4,5,6]],
+    [[-3,1,5],[-1,7],[-3,-1,1,5,7]],
+    [[],[2,6],[2,6]],
+    [[5],[2],[2,5]]
+  ]).test('Should return a merge of two arrays', (input1,input2,expected) => {
+    expect(mergeTwoSorted(input1,input2)).toEqual(expected);
   });
 });

@@ -62,9 +62,38 @@ const quickSort = (arr) => {
   return [...quickSort(smaller),head,...quickSort(greater)];
 };
 
+// mergeTwoSorted
+// returns a merge of two sorted arrays preserving elements order
+// is allowed to modify arguments
+
+export const mergeTwoSorted = (arr1,arr2) => {
+  const result = [];
+  while(arr1.length !== 0 && arr2.length !== 0) {
+    if(arr1[0] < arr2[0]) {
+      result.push(arr1[0]);
+      arr1.splice(0,1); // removes first element from arr1
+    } else {
+      result.push(arr2[0]);
+      arr2.splice(0,1);
+    }
+  }
+  return [...result,...arr1,...arr2];
+};
+
+// mergeSort
+// implements merge sort algorithm
+
+const mergeSort = (arr) => {
+  if(arr.length === 0 || arr.length === 1) return arr;
+  const alfa = arr.slice(0, arr.length/2);
+  const omega = arr.slice(arr.length/2, arr.length);
+  return mergeTwoSorted(mergeSort(alfa),mergeSort(omega));
+};
+
 export default {
   bubbleSort,
   insertionSort,
   selectionSort,
-  quickSort
+  quickSort,
+  mergeSort
 };
