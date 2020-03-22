@@ -1,5 +1,5 @@
 import each from "jest-each";
-import {constFunc, composeTwo, iterateIt} from './functionfunctions';
+import {constFunc, composeTwo, iterateIt, timeIt} from './functionfunctions';
 
 describe('Testing constFunc',() => {
   each([
@@ -36,7 +36,7 @@ describe('Testing iterateIt', () => {
       const iterated = iterateIt(func,times);
       input.forEach((x, index) => expect(iterated(x)).toBe(expected[index]));
   });
-  
+
   each([
     [(x) => x * 2, -5],
     [(x) => x * x + 2, -100]
@@ -45,4 +45,13 @@ describe('Testing iterateIt', () => {
   });
 });
 
-
+describe('Testing timeIt', () => {
+  const sleepFor = (sleepDuration) => {
+    var now = new Date().getTime();
+    while(new Date().getTime() <= now + sleepDuration){ /* do nothing */ } 
+  }
+  test('Should properly measure time', () => {
+    const measured = timeIt(sleepFor);
+    expect(measured(1000).time).toBeGreaterThanOrEqual(1000);
+  });
+});
