@@ -45,3 +45,7 @@ export const iterateIt = (func, times) => {
     return result;
   };
 };
+
+// Task
+// timeIt<T1,T2>: (func: (x: T1) => T2) => ((x: T1) => { time: number, result: T2 })
+// decorates the function with time measurement
