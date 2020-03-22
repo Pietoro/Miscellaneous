@@ -1,5 +1,5 @@
 import each from "jest-each";
-import {constFunc, composeTwo} from './functionfunctions';
+import {constFunc, composeTwo, iterateIt} from './functionfunctions';
 
 describe('Testing constFunc',() => {
   each([
@@ -25,3 +25,24 @@ describe('Testing composeTwo', () => {
       });
     });
 });
+
+describe('Testing iterateIt', () => {
+  each([
+    [(x) => 2 * x, 2, [2,5,12],[8,20,48]],
+    [(x) => x - 2, 0, [1,6,44],[1,6,44]],
+    [(x) => x - 3, 3,[0,-4,100],[-9,-13,91]]
+  ]).test('Should iterate a function a given number of times', 
+    (func, times, input, expected) => {
+      const iterated = iterateIt(func,times);
+      input.forEach((x, index) => expect(iterated(x)).toBe(expected[index]));
+  });
+  
+  each([
+    [(x) => x * 2, -5],
+    [(x) => x * x + 2, -100]
+  ]).test('Should return undefined', (func, times) => {
+    expect(iterateIt(func,times)).toBeUndefined()
+  });
+});
+
+
