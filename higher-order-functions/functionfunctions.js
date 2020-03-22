@@ -34,3 +34,14 @@ export const composeThem = (...funcs) => funcs
 // takes the argument and gives it back to itself as an argument
 // for `times` = 0, returns identity function
 // for `times` < 0, returns undefined
+
+export const iterateIt = (func, times) => {
+  if(times < 0) return undefined;
+  return (x) => {
+    let result = x;
+    for (let i = 0; i < times; i++) {
+      result = func(result); 
+    }
+    return result;
+  };
+};
