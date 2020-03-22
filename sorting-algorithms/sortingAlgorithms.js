@@ -37,7 +37,21 @@ const insertionSort = (arr) => {
   return result;
 };
 
+// selectionSort
+// implements selection sort algorithm
+
+const selectionSort = (arr) => {
+  const result = [...arr]; 
+  for(let limit = 0; limit < result.length; limit++) {
+    const argMin = result.slice(limit,result.length)
+      .reduce((total,el,index) => result[total] > el ? index+limit : total, limit);
+    swapElements(result,argMin,limit);
+  }
+  return result;
+}
+
 export default {
   bubbleSort,
-  insertionSort
+  insertionSort,
+  selectionSort
 };
