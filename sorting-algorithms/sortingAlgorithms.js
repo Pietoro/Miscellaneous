@@ -20,8 +20,24 @@ const bubbleSort = (arr) => {
     }
   }
   return result;
-}
+};
+
+// insertionSort
+// implements insertion sort algorithm
+
+const insertionSort = (arr) => {
+  const result = [...arr]; // clone array
+  for (let limit = 1; limit < result.length; limit++) {
+    for(let i = limit; i > 0; i--) {
+      if(result[i] < result[i-1]) {
+        swapElements(result,i,i-1);
+      }
+    }
+  }
+  return result;
+};
 
 export default {
-  bubbleSort
+  bubbleSort,
+  insertionSort
 };
