@@ -1,4 +1,4 @@
-import sortingAlgorithms from './sortingAlorithms';
+import sortingAlgorithms from './sortingAlgorithms';
 import each from 'jest-each';
 
 for (const key in sortingAlgorithms) {
