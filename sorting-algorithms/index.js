@@ -1,4 +1,10 @@
+import sortingAlgorithms from './sortingAlgorithms.js';
+import chartSortingAlgorithms from './measurements.js';
+
 document.getElementById("btn-draw").onclick = draw;
+
+const chartSize = 500;
+const chartScale = 6;
 
 function draw() {
 
@@ -7,23 +13,14 @@ function draw() {
 
   context.clearRect(0,0,600,600);
 
-  context.fillStyle = 'hsl(140,50%,50%)';
-  context.fillRect(10,10,100,100);
-
-  context.fillStyle = 'hsla(30,50%,50%,40%)';
-  context.fillRect(10,50,50,100);
-
+  const bubbleChart = chartSortingAlgorithms(sortingAlgorithms.bubbleSort,100,20,100,500);
+  const samples = 20;
+  
   context.beginPath();
-  context.strokeStyle = 'hsl(200,50%,50%)';
-  context.moveTo(20,40);
-  context.lineTo(250,300);
-  context.lineTo(450,200);
-  context.lineTo(250,350);
-  context.closePath();
-  context.fill();
-
-  context.beginPath();
-  context.strokeStyle = 'hsl(100,50%,50%)';
-  context.arc(300,300,200,0.5 * Math.PI,2*Math.PI);
-  context.fill();
+  context.strokeStyle = 'hsl(0,0%,0%)';
+  context.moveTo(50 + chartSize/samples,550 - bubbleChart[0]/chartScale * chartSize);
+  bubbleChart.forEach((el,index) => {
+    context.lineTo(50 + (chartSize/samples) * (index+1),550 - el/chartScale * chartSize);
+  });
+  context.stroke();
 }
