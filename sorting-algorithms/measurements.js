@@ -22,4 +22,11 @@ const testSortingAlgorithm = (algorithm,length,times = 1,range = 500) => {
   return time/times;
 };
 
+const chartSortingAlgorithm = (algorithm,step,samples,times = 1,range = 500) =>
+  Array.from({length: samples})
+    .map((x,index) => index + 1)
+    .map((x) => x * step)
+    .map((length) => testSortingAlgorithm(algorithm,length,times,range));
 
+
+export default chartSortingAlgorithm;
