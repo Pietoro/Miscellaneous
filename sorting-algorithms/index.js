@@ -4,7 +4,7 @@ import chartSortingAlgorithms from './measurements.js';
 document.getElementById("btn-draw").onclick = draw;
 
 const CHART_SIZE = 500;
-const CHART_SCALE = 30;
+const CHART_SCALE = 50;
 const CHART_PADDING = 50;
 const SAMPLES = 15;
 const STEP = 300;
@@ -13,7 +13,9 @@ const RANGE = 500;
 const ALGORITHMS = [
   { name: 'bubbleSort', label: 'Bubble Sort', hue: 0 },
   { name: 'quickSort', label: 'Quick Sort', hue: 200},
-  { name: 'mergeSort', label: 'Merge Sort', hue: 300}
+  { name: 'mergeSort', label: 'Merge Sort', hue: 300},
+  { name: 'selectionSort', label: 'Selection Sort', hue: 40},
+  { name: 'insertionSort', label: 'Insertion Sort', hue: 120}
 ];
 const ARROW_SIZE = 10;
 
@@ -24,6 +26,7 @@ function draw() {
 
   context.clearRect(0,0,600,600);
 
+  generateLabels();
   drawAxes(context);
 
   ALGORITHMS.forEach((algorithmData) => {
@@ -100,5 +103,14 @@ function drawAxes(context) {
 
   context.stroke();
   context.lineWidth = 1;
+
+}
+
+function generateLabels() {
+
+  //document.getElementById('labels').innerHTML = `<li style="color: hsl(${ALGORITHMS[0].hue}, 100%, 50%)">${ALGORITHMS[0].label}</li>`;
+  document.getElementById('labels').innerHTML = ALGORITHMS
+    .map((el) => `<li style="color: hsl(${el.hue}, 100%, 50%)">${el.label}</li>`)
+    .reduce((total, el) => total.concat(el),'');
 
 }
