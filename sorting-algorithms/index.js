@@ -36,6 +36,7 @@ function plotLineChartForAlgorithm(context, algorithm, hue = 0) {
   
   context.beginPath();
   context.strokeStyle = `hsl(${hue},100%,50%)`;
+  context.lineWidth = 3;
   context.moveTo(
     CHART_PADDING + CHART_SIZE/SAMPLES,
     CHART_SIZE + CHART_PADDING - chart[0]/CHART_SCALE * CHART_SIZE);
@@ -46,6 +47,7 @@ function plotLineChartForAlgorithm(context, algorithm, hue = 0) {
       CHART_SIZE + CHART_PADDING - el/CHART_SCALE * CHART_SIZE);
   });
   context.stroke();
+  context.lineWidth = 1;
 }
 
 function drawAxes(context) {
@@ -61,9 +63,21 @@ function drawAxes(context) {
   context.lineTo(CHART_PADDING, CHART_PADDING);
   context.lineTo(CHART_PADDING + ARROW_SIZE/2, CHART_PADDING + ARROW_SIZE);
   
-  context.moveTo(CHART_SIZE + CHART_PADDING - ARROW_SIZE, CHART_SIZE + CHART_PADDING - ARROW_SIZE/2)
+  context.moveTo(CHART_SIZE + CHART_PADDING - ARROW_SIZE, CHART_SIZE + CHART_PADDING - ARROW_SIZE/2);
   context.lineTo(CHART_SIZE + CHART_PADDING, CHART_SIZE + CHART_PADDING);
-  context.lineTo(CHART_SIZE + CHART_PADDING - ARROW_SIZE, CHART_SIZE + CHART_PADDING + ARROW_SIZE/2)
+  context.lineTo(CHART_SIZE + CHART_PADDING - ARROW_SIZE, CHART_SIZE + CHART_PADDING + ARROW_SIZE/2);
+
+  for(let i = 1;i < SAMPLES; i++) {
+    context.moveTo(
+      CHART_PADDING + (CHART_SIZE/SAMPLES) * i,
+      CHART_SIZE + CHART_PADDING - ARROW_SIZE/3
+    );
+    context.lineTo(
+      CHART_PADDING + (CHART_SIZE/SAMPLES) * i,
+      CHART_SIZE + CHART_PADDING + ARROW_SIZE/3
+    );
+
+  }
 
   context.stroke();
 
