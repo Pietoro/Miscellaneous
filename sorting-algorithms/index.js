@@ -12,7 +12,8 @@ const TIMES = 10;
 const RANGE = 500;
 const ALGORITHMS = [
   { name: 'bubbleSort', label: 'Bubble Sort', hue: 0 },
-  { name: 'quickSort', label: 'Quick Sort', hue: 200}
+  { name: 'quickSort', label: 'Quick Sort', hue: 200},
+  { name: 'mergeSort', label: 'Merge Sort', hue: 300}
 ];
 const ARROW_SIZE = 10;
 
@@ -25,23 +26,23 @@ function draw() {
 
   drawAxes(context);
 
-  ALGORITHMS.forEach((algorithmData) => 
-    plotLineChartForAlgorithm(context, sortingAlgorithms[algorithmData.name],algorithmData.hue)
-  );
+  ALGORITHMS.forEach((algorithmData) => {
+    const chartData = chartSortingAlgorithms(sortingAlgorithms[algorithmData.name],STEP,SAMPLES,TIMES,RANGE);
+    plotLineChartForAlgorithm(context, chartData, algorithmData.hue);
+    plotPointChartForAlgorithm(context, chartData, algorithmData.hue);
+  });
 }
 
-function plotLineChartForAlgorithm(context, algorithm, hue = 0) {
-  const chart = chartSortingAlgorithms(algorithm,STEP,SAMPLES,TIMES,RANGE);
-
+function plotLineChartForAlgorithm(context, chartData, hue = 0) {
   
   context.beginPath();
   context.strokeStyle = `hsl(${hue},100%,50%)`;
   context.lineWidth = 3;
   context.moveTo(
     CHART_PADDING + CHART_SIZE/SAMPLES,
-    CHART_SIZE + CHART_PADDING - chart[0]/CHART_SCALE * CHART_SIZE);
+    CHART_SIZE + CHART_PADDING - chartData[0]/CHART_SCALE * CHART_SIZE);
   
-  chart.forEach((el,index) => {
+  chartData.forEach((el,index) => {
     context.lineTo(
       CHART_PADDING + (CHART_SIZE/SAMPLES) * (index+1),
       CHART_SIZE + CHART_PADDING - el/CHART_SCALE * CHART_SIZE);
@@ -50,10 +51,28 @@ function plotLineChartForAlgorithm(context, algorithm, hue = 0) {
   context.lineWidth = 1;
 }
 
+function plotPointChartForAlgorithm(context, chartData, hue = 0) {
+
+  context.fillStyle = `hsl(${hue},100%,40%)`;
+  chartData.forEach((el,index) => {
+    context.beginPath();
+    context.arc(
+      CHART_PADDING + (CHART_SIZE/SAMPLES) * (index+1),
+      CHART_SIZE + CHART_PADDING - el/CHART_SCALE * CHART_SIZE,
+      ARROW_SIZE/2,
+      0,
+      2 * Math.PI
+      );
+    context.fill();
+  });
+
+}
+
 function drawAxes(context) {
   
   context.beginPath();
   context.strokeStyle = 'hsl(0,0%,0%)';
+  context.lineWidth = 2;
   context.moveTo(CHART_PADDING, CHART_PADDING);
   context.lineTo(CHART_PADDING, CHART_SIZE + CHART_PADDING + ARROW_SIZE);
   context.moveTo(CHART_PADDING - ARROW_SIZE, CHART_SIZE + CHART_PADDING);
@@ -80,5 +99,6 @@ function drawAxes(context) {
   }
 
   context.stroke();
+  context.lineWidth = 1;
 
 }
