@@ -3,8 +3,17 @@ import chartSortingAlgorithms from './measurements.js';
 
 document.getElementById("btn-draw").onclick = draw;
 
-const chartSize = 500;
-const chartScale = 6;
+const CHART_SIZE = 500;
+const CHART_SCALE = 30;
+const CHART_PADDING = 50;
+const SAMPLES = 15;
+const STEP = 300;
+const TIMES = 10;
+const RANGE = 500;
+const ALGORITHMS = [
+  { name: 'bubbleSort', label: 'Bubble Sort', hue: 0 },
+  { name: 'quickSort', label: 'Quick Sort', hue: 200}
+];
 
 function draw() {
 
@@ -13,14 +22,27 @@ function draw() {
 
   context.clearRect(0,0,600,600);
 
-  const bubbleChart = chartSortingAlgorithms(sortingAlgorithms.bubbleSort,100,20,100,500);
-  const samples = 20;
+  ALGORITHMS.forEach((algorithmData) => 
+    plotLineChartForAlgorithm(context, sortingAlgorithms[algorithmData.name],algorithmData.hue)
+  );
+  
+  
+}
+
+function plotLineChartForAlgorithm(context, algorithm, hue = 0) {
+  const chart = chartSortingAlgorithms(algorithm,STEP,SAMPLES,TIMES,RANGE);
+
   
   context.beginPath();
-  context.strokeStyle = 'hsl(0,0%,0%)';
-  context.moveTo(50 + chartSize/samples,550 - bubbleChart[0]/chartScale * chartSize);
-  bubbleChart.forEach((el,index) => {
-    context.lineTo(50 + (chartSize/samples) * (index+1),550 - el/chartScale * chartSize);
+  context.strokeStyle = `hsl(${hue},100%,50%)`;
+  context.moveTo(
+    CHART_PADDING + CHART_SIZE/SAMPLES,
+    CHART_SIZE + CHART_PADDING - chart[0]/CHART_SCALE * CHART_SIZE);
+  
+  chart.forEach((el,index) => {
+    context.lineTo(
+      CHART_PADDING + (CHART_SIZE/SAMPLES) * (index+1),
+      CHART_SIZE + CHART_PADDING - el/CHART_SCALE * CHART_SIZE);
   });
   context.stroke();
 }
