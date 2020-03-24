@@ -14,6 +14,7 @@ const ALGORITHMS = [
   { name: 'bubbleSort', label: 'Bubble Sort', hue: 0 },
   { name: 'quickSort', label: 'Quick Sort', hue: 200}
 ];
+const ARROW_SIZE = 10;
 
 function draw() {
 
@@ -22,11 +23,11 @@ function draw() {
 
   context.clearRect(0,0,600,600);
 
+  drawAxes(context);
+
   ALGORITHMS.forEach((algorithmData) => 
     plotLineChartForAlgorithm(context, sortingAlgorithms[algorithmData.name],algorithmData.hue)
   );
-  
-  
 }
 
 function plotLineChartForAlgorithm(context, algorithm, hue = 0) {
@@ -45,4 +46,25 @@ function plotLineChartForAlgorithm(context, algorithm, hue = 0) {
       CHART_SIZE + CHART_PADDING - el/CHART_SCALE * CHART_SIZE);
   });
   context.stroke();
+}
+
+function drawAxes(context) {
+  
+  context.beginPath();
+  context.strokeStyle = 'hsl(0,0%,0%)';
+  context.moveTo(CHART_PADDING, CHART_PADDING);
+  context.lineTo(CHART_PADDING, CHART_SIZE + CHART_PADDING + ARROW_SIZE);
+  context.moveTo(CHART_PADDING - ARROW_SIZE, CHART_SIZE + CHART_PADDING);
+  context.lineTo(CHART_SIZE + CHART_PADDING, CHART_SIZE + CHART_PADDING);
+
+  context.moveTo(CHART_PADDING - ARROW_SIZE/2, CHART_PADDING + ARROW_SIZE);
+  context.lineTo(CHART_PADDING, CHART_PADDING);
+  context.lineTo(CHART_PADDING + ARROW_SIZE/2, CHART_PADDING + ARROW_SIZE);
+  
+  context.moveTo(CHART_SIZE + CHART_PADDING - ARROW_SIZE, CHART_SIZE + CHART_PADDING - ARROW_SIZE/2)
+  context.lineTo(CHART_SIZE + CHART_PADDING, CHART_SIZE + CHART_PADDING);
+  context.lineTo(CHART_SIZE + CHART_PADDING - ARROW_SIZE, CHART_SIZE + CHART_PADDING + ARROW_SIZE/2)
+
+  context.stroke();
+
 }
