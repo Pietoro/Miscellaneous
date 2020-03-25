@@ -1,4 +1,4 @@
-import {add, sub, mul} from './complex.js';
+import {add, sub, mul, abs} from './complex.js';
 import each from 'jest-each';
 
 describe('Testing add', () => {
@@ -32,5 +32,17 @@ describe('Testing mul', () => {
   ]).test('Should return the product', (z1, z2, expected) => {
     expect(mul(z1,z2)).toEqual(expected);
     expect(mul(z2,z1)).toEqual(mul(z1,z2));
+  });
+});
+
+describe('Testing abs', () => {
+  each([
+    [{re: 1, im: 2}, Math.sqrt(5)],
+    [{re: -3, im: 4}, 5],
+    [{re: 0, im: 0}, 0],
+    [{re: 1, im: 0}, 1]
+  ]).test('Should return the absolute value', (z, expected) => {
+    expect(abs(z)).toBeCloseTo(expected);
+    expect(abs(z)).toBeGreaterThanOrEqual(0);
   });
 });
