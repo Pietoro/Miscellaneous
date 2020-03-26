@@ -12,6 +12,22 @@ const iterateIt = (func, times) => {
   };
 };
 
+// generateGrid: (xMin, xMax, xCount, yMin, yMax, yCount) => complex[][]
+
+const generateGrid = (xMin, xMax, xCount, yMin, yMax, yCount) => {
+  const result = Array.from({length: yCount})
+    .map((el) => Array.from({length: xCount}));
+  
+  const xStep = (xMax - xMin)/(xCount - 1);
+  const yStep = (yMax - yMin)/(yCount - 1);
+
+  for(let i = 0; i < yCount; i++) {
+    for(let j = 0; j < xCount; j++) {
+      result[i][j] = {re: xMin + j * xStep, im: yMin + i * yStep};
+    }
+  }
+};
+
 const transform = (c) => (
   (z) => add(mul(z,z),c)
 );
