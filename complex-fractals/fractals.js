@@ -45,3 +45,10 @@ const julia = (c,z,times) => {
   if(abs(iterated(z)) <= 2) return true;
   return false;
 };
+
+// juliaGrid: (c, times, xMin, xMax, xCount, yMin, yMax, yCount) => bool[][]
+
+const juliaGrid = (c, times, xMin, xMax, xCount, yMin, yMax, yCount) => {
+  const grid = generateGrid(xMin, xMax, xCount, yMin, yMax, yCount);
+  return grid.map((zs) => zs.map((z) => julia(c,z,times)));
+};
