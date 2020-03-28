@@ -56,6 +56,13 @@ section {
 canvas {
   background-color: white;
   border: var(--border);
+  display: inline-block;
 }
 
-
+#color-sample {
+  height: 25px;
+  width: 25px;
+  background-color: white;
+  border: var(--border);
+  display: inline-block;
+}

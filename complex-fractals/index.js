@@ -2,13 +2,18 @@ import {juliaGrid} from './fractals.js';
 
 const ROUTES = ['julia'];
 const BORDER_SIZE = 3;
+const TIMES = 10;
 
 let route = 'julia';
 let c = {re: 0, im: 0};
 let hue = 185;
 document.getElementById("btn-draw").onclick = draw;
-document.getElementById("point-picker").onclick = (ev) => setPoint(ev);
+document.getElementById("point-picker").onclick = setPoint;
+document.getElementById("color-picker").onclick = setColor;
 drawPointPicker();
+initColorPicker();
+
+draw();
 
 function draw() {
   console.log('start');
@@ -24,11 +29,11 @@ function draw() {
 
 function drawJulia(context, w, h) {
 
-  const grid = juliaGrid(c, 50, -2, 2, w, -2, 2, h);
+  const grid = juliaGrid(c, TIMES, -2, 2, w, -2, 2, h);
 
   for(let i = 0; i < h; i++) {
     for(let j = 0; j < w; j++) {
-      if(grid[i][j] === true) fillPoint(context, j, h-i-1, `hsl(${hue},100%,40%)`);
+      if(grid[i][j] === true) fillPoint(context, j, h-i-1, `hsl(${hue},100%,50%)`);
     }
   }
 }
@@ -72,6 +77,34 @@ function setPoint(ev) {
     c = {re: (2 * x - w)/w, im: -(2 * y - h)/h};
     drawPointPicker();
     
+    draw();
+  }
+}
+
+function initColorPicker() {
+  const canvas = document.getElementById('color-picker');
+  const context = canvas.getContext('2d');
+  const w = canvas.getAttribute('width');
+  const h = canvas.getAttribute('height');
+  document.getElementById("color-sample").style.backgroundColor = `hsl(${hue},100%,50%)`;
+
+  context.clearRect(0,0,w,h);
+
+  for(let x = 0; x < w; x++) {
+    context.fillStyle = `hsl(${x*360/w}, 100%, 50%)`;
+    context.fillRect(x, 0, 1, h);
+  }
+}
+
+function setColor(ev) {
+  const rect = ev.target.getBoundingClientRect();
+  const x = ev.clientX - rect.left - BORDER_SIZE;
+  // const y = ev.clientY - rect.top - BORDER_SIZE; 
+  const w = ev.target.getAttribute('width');
+  // const h = ev.target.getAttribute('height');
+  if(x >= 0 && x <= w) {
+    hue = x * 360/w;
+    document.getElementById("color-sample").style.backgroundColor = `hsl(${hue},100%,50%)`;
     draw();
   }
 }
