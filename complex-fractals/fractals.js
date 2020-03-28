@@ -64,3 +64,25 @@ export const juliaLightnessGrid = (c, times, xMin, xMax, xCount, yMin, yMax, yCo
   const grid = generateGrid(xMin, xMax, xCount, yMin, yMax, yCount);
   return grid.map((zs) => zs.map((z) => juliaLightness(c,z,times)));
 };
+
+const mandelbrot = (z,times) => {
+  const iterated = iterateIt(transform(z),times);
+  if(abs(iterated({re: 0, im: 0})) <= 2) return true;
+  return false;
+};
+
+export const mandelbrotGrid = (times, xMin, xMax, xCount, yMin, yMax, yCount) => {
+  const grid = generateGrid(xMin, xMax, xCount, yMin, yMax, yCount);
+  return grid.map((zs) => zs.map((z) => mandelbrot(z,times)));
+};
+
+const mandelbrotLightness = (z,times) => {
+  const iterated = iterateIt(transform(z),times);
+  const tanh = Math.tanh(abs(iterated({re: 0, im: 0})));
+  return ((isNaN(tanh)) ? 100 : Math.max(tanh * 100, 15));
+}
+
+export const mandelbrotLightnessGrid = (times, xMin, xMax, xCount, yMin, yMax, yCount) => {
+  const grid = generateGrid(xMin, xMax, xCount, yMin, yMax, yCount);
+  return grid.map((zs) => zs.map((z) => mandelbrotLightness(z,times)));
+};

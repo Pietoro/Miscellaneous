@@ -1,4 +1,4 @@
-import {juliaGrid, juliaLightnessGrid} from './fractals.js';
+import {juliaGrid, juliaLightnessGrid, mandelbrotGrid, mandelbrotLightnessGrid} from './fractals.js';
 
 const ROUTES = ['julia', 'mandelbrot'];
 const BORDER_SIZE = 3;
@@ -7,7 +7,7 @@ const TIMES = 50;
 let route = 'julia';
 let c = {re: 0, im: 0};
 let hue = 185;
-document.getElementById("btn-draw").onclick = draw;
+
 document.getElementById("point-picker").onclick = setPoint;
 document.getElementById("color-picker").onclick = setColor;
 document.getElementById("cbx-fluid-colors").onchange = draw;
@@ -17,7 +17,7 @@ document.getElementById("link-mandelbrot").onclick = () => setRoute('mandelbrot'
 drawPointPicker();
 initColorPicker();
 
-// draw();
+draw();
 
 function draw() {
   console.log('start');
@@ -33,25 +33,24 @@ function draw() {
       drawJulia(context, w, h);
       break;
     case 'mandelbrot':
-     
+      drawMandelbrot(context, w, h)
       break;
   }
-
-  
   console.log('finish');
 }
 
 function drawJulia(context, w, h) {
 
   const fluidColors = document.getElementById("cbx-fluid-colors").checked;
-  console.log(fluidColors);
+  const invertLightness = document.getElementById("cbx-invert-lightness").checked;
 
   if(fluidColors) {
     const grid = juliaLightnessGrid(c, TIMES, -2, 2, w, -2, 2, h);
 
     for(let i = 0; i < h; i++) {
       for(let j = 0; j < w; j++) {
-        fillPoint(context, j, h-i-1, `hsl(${hue},100%,${grid[i][j]}%)`);
+        fillPoint(context, j, h-i-1, 
+          `hsl(${hue},100%,${invertLightness ? 100-grid[i][j] : grid[i][j]}%)`);
       }
     }
   } else {
@@ -60,6 +59,32 @@ function drawJulia(context, w, h) {
     for(let i = 0; i < h; i++) {
       for(let j = 0; j < w; j++) {
         if(grid[i][j] === true) fillPoint(context, j, h-i-1, `hsl(${hue},100%,50%)`);
+        else if(invertLightness) fillPoint(context, j, h-i-1, `hsl(0,0%,0%)`);
+      }
+    }
+  }
+}
+
+function drawMandelbrot(context, w, h) {
+
+  const fluidColors = document.getElementById("cbx-fluid-colors").checked;
+  const invertLightness = document.getElementById("cbx-invert-lightness").checked;
+
+  if(fluidColors) {
+    const grid = mandelbrotLightnessGrid(TIMES, -2, 2, w, -2, 2, h);
+
+    for(let i = 0; i < h; i++) {
+      for(let j = 0; j < w; j++) {
+        fillPoint(context, j, h-i-1, `hsl(${hue},100%,${invertLightness ? 100-grid[i][j] : grid[i][j]}%)`);
+      }
+    }
+  } else {
+    const grid = mandelbrotGrid(TIMES, -2, 2, w, -2, 2, h);
+
+    for(let i = 0; i < h; i++) {
+      for(let j = 0; j < w; j++) {
+        if(grid[i][j] === true) fillPoint(context, j, h-i-1, `hsl(${hue},100%,50%)`);
+        else if(invertLightness) fillPoint(context, j, h-i-1, `hsl(0,0%,0%)`);
       }
     }
   }
@@ -152,11 +177,9 @@ function setRoute(newRoute) {
   switch(newRoute) {
     case 'julia':
       document.querySelector('.point-picker-container').style.display = 'block';
-      console.log('julia');
       break;
     case 'mandelbrot':
       document.querySelector('.point-picker-container').style.display = 'none';
-      console.log('mandelbrot');
       break;
   }
   draw();
