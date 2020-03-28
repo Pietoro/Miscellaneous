@@ -1,4 +1,4 @@
-import { abs, add, mul } from "./complex";
+import { abs, add, mul } from "./complex.js";
 
 // implemented and tested in higher-order-functions
 const iterateIt = (func, times) => {
@@ -26,6 +26,7 @@ const generateGrid = (xMin, xMax, xCount, yMin, yMax, yCount) => {
       result[i][j] = {re: xMin + j * xStep, im: yMin + i * yStep};
     }
   }
+  return result;
 };
 
 const transform = (c) => (
@@ -48,7 +49,7 @@ const julia = (c,z,times) => {
 
 // juliaGrid: (c, times, xMin, xMax, xCount, yMin, yMax, yCount) => bool[][]
 
-const juliaGrid = (c, times, xMin, xMax, xCount, yMin, yMax, yCount) => {
+export const juliaGrid = (c, times, xMin, xMax, xCount, yMin, yMax, yCount) => {
   const grid = generateGrid(xMin, xMax, xCount, yMin, yMax, yCount);
   return grid.map((zs) => zs.map((z) => julia(c,z,times)));
 };
