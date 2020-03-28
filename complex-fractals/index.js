@@ -1,11 +1,13 @@
 import {juliaGrid} from './fractals.js';
 
 const ROUTES = ['julia'];
+const BORDER_SIZE = 3;
 
 let route = 'julia';
-let c = {re: -0.19, im: -0.50};
+let c = {re: 0, im: 0};
 let hue = 185;
 document.getElementById("btn-draw").onclick = draw;
+document.getElementById("point-picker").onclick = (ev) => setPoint(ev);
 drawPointPicker();
 
 function draw() {
@@ -41,7 +43,8 @@ function drawPointPicker() {
   const context = canvas.getContext('2d');
   const w = canvas.getAttribute('width');
   const h = canvas.getAttribute('height');
-
+  
+  context.clearRect(0,0,w,h);
   context.strokeStyle = 'hsl(0,0%,40%)';
   context.lineWidth = 2;
   context.beginPath();
@@ -57,4 +60,18 @@ function drawPointPicker() {
   
   context.arc(w/2 + (w/2) * c.re, h/2 - (h/2) * c.im, 4, 0, 2 * Math.PI);
   context.fill();
+}
+
+function setPoint(ev) {
+  const rect = ev.target.getBoundingClientRect();
+  const x = ev.clientX - rect.left - BORDER_SIZE;
+  const y = ev.clientY - rect.top - BORDER_SIZE;
+  const w = ev.target.getAttribute('width');
+  const h = ev.target.getAttribute('height');
+  if(x >= 0 && x <= w && y >= 0 && y <= h) {
+    c = {re: (2 * x - w)/w, im: -(2 * y - h)/h};
+    drawPointPicker();
+    
+    draw();
+  }
 }

@@ -53,10 +53,6 @@ section {
   width: 600px;
 }
 
-.canvas-container {
-  width: fit-content;
-}
-
 canvas {
   background-color: white;
   border: var(--border);
