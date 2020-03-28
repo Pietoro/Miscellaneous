@@ -1,8 +1,8 @@
-import {juliaGrid} from './fractals.js';
+import {juliaGrid, juliaLightnessGrid} from './fractals.js';
 
 const ROUTES = ['julia'];
 const BORDER_SIZE = 3;
-const TIMES = 10;
+const TIMES = 50;
 
 let route = 'julia';
 let c = {re: 0, im: 0};
@@ -10,10 +10,11 @@ let hue = 185;
 document.getElementById("btn-draw").onclick = draw;
 document.getElementById("point-picker").onclick = setPoint;
 document.getElementById("color-picker").onclick = setColor;
+document.getElementById("cbx-fluid-colors").onchange = draw;
 drawPointPicker();
 initColorPicker();
 
-draw();
+// draw();
 
 function draw() {
   console.log('start');
@@ -29,11 +30,24 @@ function draw() {
 
 function drawJulia(context, w, h) {
 
-  const grid = juliaGrid(c, TIMES, -2, 2, w, -2, 2, h);
+  const fluidColors = document.getElementById("cbx-fluid-colors").checked;
+  console.log(fluidColors);
 
-  for(let i = 0; i < h; i++) {
-    for(let j = 0; j < w; j++) {
-      if(grid[i][j] === true) fillPoint(context, j, h-i-1, `hsl(${hue},100%,50%)`);
+  if(fluidColors) {
+    const grid = juliaLightnessGrid(c, TIMES, -2, 2, w, -2, 2, h);
+
+    for(let i = 0; i < h; i++) {
+      for(let j = 0; j < w; j++) {
+        fillPoint(context, j, h-i-1, `hsl(${hue},100%,${grid[i][j]}%)`);
+      }
+    }
+  } else {
+    const grid = juliaGrid(c, TIMES, -2, 2, w, -2, 2, h);
+
+    for(let i = 0; i < h; i++) {
+      for(let j = 0; j < w; j++) {
+        if(grid[i][j] === true) fillPoint(context, j, h-i-1, `hsl(${hue},100%,50%)`);
+      }
     }
   }
 }

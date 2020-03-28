@@ -53,3 +53,14 @@ export const juliaGrid = (c, times, xMin, xMax, xCount, yMin, yMax, yCount) => {
   const grid = generateGrid(xMin, xMax, xCount, yMin, yMax, yCount);
   return grid.map((zs) => zs.map((z) => julia(c,z,times)));
 };
+
+const juliaLightness = (c,z,times) => {
+  const iterated = iterateIt(transform(c),times);
+  const tanh = Math.tanh(abs(iterated(z)));
+  return ((isNaN(tanh)) ? 100 : Math.max(tanh * 100, 15));
+}
+
+export const juliaLightnessGrid = (c, times, xMin, xMax, xCount, yMin, yMax, yCount) => {
+  const grid = generateGrid(xMin, xMax, xCount, yMin, yMax, yCount);
+  return grid.map((zs) => zs.map((z) => juliaLightness(c,z,times)));
+};
