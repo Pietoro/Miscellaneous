@@ -4,14 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <div class="nav-links"></div>
-    <div class="canvas-container">
-      <canvas id="fractal" width="600" height="600"></canvas>
-    </div>
-    <button id="btn-draw">Draw</button>
+    <nav class="nav-links">
+      <button class="btn-nav-link btn-nav-link-active" id="link-julia">Julia</button>
+      <button class="btn-nav-link" id="link-mandelbrot">Mandelbrot</button>
+    </nav>
+    <main>
+      <div class="canvas-container">
+        <canvas id="fractal" width="600" height="600"></canvas>
+      </div>
+      <button id="btn-draw">Draw</button>
+    </main>
   </div>
 
   <script src="./index.js" type="module"></script>

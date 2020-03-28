@@ -1,0 +1,54 @@
+html {
+  --btn-nav-bg-color: hsl(185,80%,80%);
+  --main-bg-color: hsl(185,80%,60%);
+  --border-color: hsl(185,50%,50%);
+  --border: 3px solid var(--border-color);
+}
+
+.nav-links {
+  width: 800px;
+  height: 80px;
+  display: grid;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  grid-template: 1fr/repeat(2,1fr);
+}
+
+.btn-nav-link {
+  font-size: 24px;
+  background-color: var(--btn-nav-bg-color);
+  border: var(--border);
+  border-left: none;
+}
+
+.btn-nav-link:first-child {
+  border-left: var(--border);
+}
+
+.btn-nav-link-active {
+  background-color: var(--main-bg-color);
+  border-bottom: var(--btn-nav-bg-color);
+}
+
+main {
+  box-sizing: border-box;
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  border: var(--border);
+  border-top: none;
+  background-color: var(--main-bg-color);
+  text-align: center;
+}
+
+.canvas-container {
+  width: fit-content;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#fractal {
+  background-color: white;
+  border: var(--border);
+}
