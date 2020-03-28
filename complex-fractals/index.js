@@ -1,6 +1,6 @@
 import {juliaGrid, juliaLightnessGrid} from './fractals.js';
 
-const ROUTES = ['julia'];
+const ROUTES = ['julia', 'mandelbrot'];
 const BORDER_SIZE = 3;
 const TIMES = 50;
 
@@ -11,6 +11,9 @@ document.getElementById("btn-draw").onclick = draw;
 document.getElementById("point-picker").onclick = setPoint;
 document.getElementById("color-picker").onclick = setColor;
 document.getElementById("cbx-fluid-colors").onchange = draw;
+document.getElementById("link-julia").onclick = () => setRoute('julia');
+document.getElementById("link-mandelbrot").onclick = () => setRoute('mandelbrot');
+
 drawPointPicker();
 initColorPicker();
 
@@ -24,7 +27,17 @@ function draw() {
   const h = canvas.getAttribute('height');
 
   context.clearRect(0,0,w,h);
-  drawJulia(context, w, h);
+
+  switch(route) {
+    case 'julia':
+      drawJulia(context, w, h);
+      break;
+    case 'mandelbrot':
+     
+      break;
+  }
+
+  
   console.log('finish');
 }
 
@@ -121,4 +134,30 @@ function setColor(ev) {
     document.getElementById("color-sample").style.backgroundColor = `hsl(${hue},100%,50%)`;
     draw();
   }
+}
+
+function setRoute(newRoute) {
+  if(route === newRoute) {
+    return;
+  }
+  document.getElementById(`link-${route}`).classList.remove('btn-nav-link-active');
+  route = newRoute;
+  // ROUTES
+  //   .map((r) => 'link-' + r)
+  //   .map((id) => document.getElementById(id))
+  //   .forEach((link) => link.classList.remove('btn-nav-link-active'));
+  
+  document.getElementById(`link-${route}`).classList.add('btn-nav-link-active');
+
+  switch(newRoute) {
+    case 'julia':
+      document.querySelector('.point-picker-container').style.display = 'block';
+      console.log('julia');
+      break;
+    case 'mandelbrot':
+      document.querySelector('.point-picker-container').style.display = 'none';
+      console.log('mandelbrot');
+      break;
+  }
+  draw();
 }
