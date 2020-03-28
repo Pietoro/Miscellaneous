@@ -42,13 +42,24 @@ main {
   text-align: center;
 }
 
-.canvas-container {
-  width: fit-content;
+section {
   padding-top: 20px;
   padding-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-#fractal {
+.options-container {
+  width: 600px;
+}
+
+.canvas-container {
+  width: fit-content;
+}
+
+canvas {
   background-color: white;
   border: var(--border);
 }
+
+
