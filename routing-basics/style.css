@@ -4,6 +4,11 @@ html {
   background-color: white;
 }
 
+::selection {
+  color: white;
+  background-color:  hsl(50,80%,50%);;
+}
+
 body {
   font-family: 'Montserrat', sans-serif;
   font-size: 22px;
