@@ -82,3 +82,19 @@ footer {
   padding-bottom: 20px;
   color: white;
 }
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table, th, tr, td {
+  border: 2px solid white;
+  border-collapse: collapse;
+  padding: 10px 50px;
+}
+
+td {
+  width: 500px;
+  height: 50px;
+}

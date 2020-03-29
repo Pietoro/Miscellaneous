@@ -6,6 +6,7 @@ const VIEWS = {
   'shop': ['index'],
   'privacy': ['index','rodo','frodo']
 };
+const API = 'https://recruitment.hal.skygate.io/companies';
 
 let path = {
   route: 'home',
@@ -18,6 +19,8 @@ let prevPath = {
   view: 'index',
   id: ''
 };
+
+initShop();
 
 function link(newRoute = 'home', newView = 'index', newId = '') {
   if(newRoute === path.route && newView === path.view && newId === path.id) return;
@@ -52,4 +55,13 @@ function displayUrl() {
   const urlView = path.view  === 'index' ? `` : `/${path.view}`;
   const urlId = path.id === '' ? `` : `?id=${path.id}`;
   document.querySelector('.url').innerHTML = `${DOMAIN}/${urlRoute}${urlView}${urlId}`;
+}
+
+async function initShop() {
+  const response = await fetch(API);
+  const data = await response.json();
+  document.getElementById('products-table').querySelector('tbody').innerHTML = data
+    .map((product) => `<tr><td>${product.city}</td><td>${product.name}</td></tr>`)
+    .reduce((total, el) => total.concat(el),'');
+  console.log(data);
 }
