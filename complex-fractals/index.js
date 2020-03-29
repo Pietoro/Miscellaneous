@@ -11,6 +11,7 @@ let hue = 185;
 document.getElementById("point-picker").onclick = setPoint;
 document.getElementById("color-picker").onclick = setColor;
 document.getElementById("cbx-fluid-colors").onchange = draw;
+document.getElementById("cbx-invert-lightness").onchange = draw;
 document.getElementById("link-julia").onclick = () => setRoute('julia');
 document.getElementById("link-mandelbrot").onclick = () => setRoute('mandelbrot');
 
