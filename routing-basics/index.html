@@ -12,13 +12,16 @@
     <button class="link" id="link-home" onclick="link()">Home</button>
     <button class="link" id="link-shop" onclick="link('shop')">Shop</button>
     <button class="link" id="link-privacy" onclick="link('privacy')">Privacy</button>
+    <button class="link" id="link-badlink" onclick="link('badlink')">Bad link</button>
   </nav>
   <main>
     <section id="route-home">
       <article id="view-home-index">This is home page</article>
     </section>
     <section id="route-notfound" style="display: none">
-      <article id="view-notfound-index" style="display: none">Page not found</article>
+      <article id="view-notfound-index" style="display: none">Page not found</br>
+        <button class="link" id="link-goback">Go back</button>
+      </article>
     </section>
     <section id="route-shop" style="display: none">
       <article id="view-shop-index" style="display: none">This is a shop</article>

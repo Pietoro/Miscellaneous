@@ -42,4 +42,5 @@ function link(newRoute = 'home', newView = 'index', newId = '') {
 
 function notFound(redirect = path) {
   link('notfound');
+  document.getElementById('link-goback').onclick = () => link(prevPath.route, prevPath.view, prevPath.id);
 }
