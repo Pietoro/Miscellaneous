@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header><div class="url">awesome.io/</div></header>
+  <nav>
+    <button class="link" id="link-home" onlick="link()">Home</button>
+    <button class="link" id="link-shop" onlick="link('shop')">Shop</button>
+    <button class="link" id="link-privacy" onlick="link('privacy')">Privacy</button>
+  </nav>
+  <main>
+    <section id="route-home">
+      <article id="view-home-index">This is home page</article>
+    </section>
+    <section id="route-notfound" style="display: none">
+      <article id="view-notfound-index" style="display: none">Page not found</article>
+    </section>
+    <section id="route-shop" style="display: none">
+      <article id="view-shop-index" style="display: none">This is a shop</article>
+    </section>
+    <section id="route-privacy" style="display: none">
+      <article id="view-privacy-index" style="display: none">We value your privacy. Read more.</article>
+      <article id="view-privacy-rodo" style="display: none">RODO</article>
+      <article id="view-privacy-frodo" style="display: none">FRODO</article>
+    </section>
+  </main>
+  <footer>Da foota</footer>
+</body>
+</html>
