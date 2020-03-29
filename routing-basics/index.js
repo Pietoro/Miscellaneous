@@ -20,6 +20,12 @@ let prevPath = {
 };
 
 function link(newRoute = 'home', newView = 'index', newId = '') {
+  if(newRoute === path.route && newView === path.view && newId === path.id) return;
+  if(!ROUTES.includes(newRoute) || !VIEWS[newRoute].includes(newView)) {
+    notFound();
+    return;
+  }
+
   prevPath = path;
   path = {
     route: newRoute,
@@ -32,4 +38,8 @@ function link(newRoute = 'home', newView = 'index', newId = '') {
   document.getElementById(`route-${newRoute}`).style.display = 'block';
   document.getElementById(`view-${newRoute}-${newView}`).style.display = 'block';
   
+}
+
+function notFound(redirect = path) {
+  link('notfound');
 }

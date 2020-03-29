@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
 html {
-  background-color: white;
+  background-color: hsl(0,0%,40%)
 }
 
 ::selection {
@@ -12,27 +12,29 @@ html {
 body {
   font-family: 'Montserrat', sans-serif;
   font-size: 22px;
-  width: 1000px;
+  width: 1400px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 0;
   text-align: center;
-  padding-top: 30px;
-  background-color: hsl(0,0%,80%);
+  background-color: hsl(0,0%,85%);
 }
 
 header {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .url {
-  border: 1px solid hsl(0,0%,40%);
+  border: 1px solid hsl(0,0%,60%);
+  border-radius: 3px;
   width: 300px;
   min-width: min-content;
   display: inline-block;
   padding: 5px 15px;
   background-color: white;
+  text-align: left;
+  color: hsl(0,0%,30%)
 }
 
 nav {
@@ -51,7 +53,7 @@ nav {
 nav > .link {
   color: white;
   font-size: 32px;
-  padding-left: 50px;
+  padding-left: 100px;
   padding-right: 50px;
 }
 
