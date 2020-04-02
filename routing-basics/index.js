@@ -3,7 +3,7 @@ const ROUTES = ['home','shop','privacy','notfound'];
 const VIEWS = {
   'notfound': ['index'],
   'home': ['index'],
-  'shop': ['index'],
+  'shop': ['index', 'details'],
   'privacy': ['index','rodo','frodo']
 };
 const API = 'https://recruitment.hal.skygate.io/companies';
