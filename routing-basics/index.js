@@ -72,8 +72,12 @@ function displayUrl() {
 async function initShop() {
   const response = await fetch(API);
   const data = await response.json();
-  document.getElementById('products-table').querySelector('tbody').innerHTML = data
-    .map((product) => `<tr id="product-${product.id}"><td>${product.city}</td><td>${product.name}</td></tr>`)
-    .reduce((total, el) => total.concat(el),'');
+  fillTable(data);
   console.log(data);
+}
+
+function fillTable(data) {
+  document.getElementById('products-table').querySelector('tbody').innerHTML = data
+  .map((product) => `<tr id="product-${product.id}"><td>${product.city}</td><td>${product.name}</td></tr>`)
+  .reduce((total, el) => total.concat(el),'');
 }
