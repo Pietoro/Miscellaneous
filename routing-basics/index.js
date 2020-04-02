@@ -23,15 +23,6 @@ let prevPath = {
 
 
 function link(newRoute = 'home', newView = 'index', newId = '') {
-  switch(newRoute) {
-    case 'shop':
-      switch(newView) {
-        case 'index':
-          initShop();
-          break;
-      }
-    break;
-  }
   
   if(newRoute === path.route && newView === path.view && newId === path.id) return;
   if(!ROUTES.includes(newRoute) || !VIEWS[newRoute].includes(newView)) {
@@ -39,7 +30,18 @@ function link(newRoute = 'home', newView = 'index', newId = '') {
     return;
   }
 
-  
+  switch(newRoute) {
+    case 'shop':
+      switch(newView) {
+        case 'index':
+          initShop();
+          break;
+        case 'details':
+          initDetails(newId);
+          break;
+      }
+    break;
+  }
 
   prevPath = path;
   path = {
@@ -80,4 +82,23 @@ function fillTable(data) {
   document.getElementById('products-table').querySelector('tbody').innerHTML = data
   .map((product) => `<tr id="product-${product.id}"><td>${product.city}</td><td>${product.name}</td></tr>`)
   .reduce((total, el) => total.concat(el),'');
+}
+
+async function initDetails(id) {
+  const response = await fetch(API);
+  const data = await response.json();
+  const product = data.find((pr) => `${pr.id}` === id);
+
+  const response2 = await fetch(`https://recruitment.hal.skygate.io/incomes/${id}`)
+  const priceData = await response2.json();
+  const price = priceData.incomes
+    .map((el) => el.value)
+    .map((v) => parseFloat(v))
+    .reduce((total, el) => total + el);
+
+  const priceTrunc = 0.01 * Math.round(price * 100);
+
+  document.getElementById('product-name').innerHTML = product.city;
+  document.getElementById('product-brand').innerHTML = product.name;
+  document.getElementById('product-price').innerHTML = `${priceTrunc} $`;
 }
