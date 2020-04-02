@@ -20,14 +20,26 @@ let prevPath = {
   id: ''
 };
 
-initShop();
+
 
 function link(newRoute = 'home', newView = 'index', newId = '') {
+  switch(newRoute) {
+    case 'shop':
+      switch(newView) {
+        case 'index':
+          initShop();
+          break;
+      }
+    break;
+  }
+  
   if(newRoute === path.route && newView === path.view && newId === path.id) return;
   if(!ROUTES.includes(newRoute) || !VIEWS[newRoute].includes(newView)) {
     notFound();
     return;
   }
+
+  
 
   prevPath = path;
   path = {
@@ -61,7 +73,7 @@ async function initShop() {
   const response = await fetch(API);
   const data = await response.json();
   document.getElementById('products-table').querySelector('tbody').innerHTML = data
-    .map((product) => `<tr><td>${product.city}</td><td>${product.name}</td></tr>`)
+    .map((product) => `<tr id="product-${product.id}"><td>${product.city}</td><td>${product.name}</td></tr>`)
     .reduce((total, el) => total.concat(el),'');
   console.log(data);
 }
