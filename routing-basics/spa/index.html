@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header><div class="url">awesome.io/</div></header>
+  <nav>
+    <button class="link" id="link-home" onclick="link()">Home</button>
+    <button class="link" id="link-shop" onclick="link('shop')">Shop</button>
+    <button class="link" id="link-privacy" onclick="link('privacy')">Privacy</button>
+    <button class="link" id="link-badlink" onclick="link('badlink')">Bad link</button>
+  </nav>
+  <main>
+    <section id="route-home">
+      <article id="view-home-index"><h3>This is home page</h3></article>
+    </section>
+    <section id="route-notfound" style="display: none">
+      <article id="view-notfound-index" style="display: none"><h3>Page not found</h3><br/>
+        <button class="link" id="link-goback">Go back</button>
+      </article>
+    </section>
+    <section id="route-shop" style="display: none">
+      <article id="view-shop-index" style="display: none"><h3>This is a shop</h3>
+        <table id="products-table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Brand</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      </article>
+      <article id="view-shop-details" style="display: none">
+        <div class="details-container">
+          <div class="product-details">
+            <div id="product-name">Name</div>
+            <div id="product-brand">Brand</div>
+            <div id="product-price">1000$</div>
+          </div>
+          <div class="btn-shop-container">
+            <button class="link btn-shop">Buy</button>
+            <button class="link btn-shop btn-add">Add to cart</button>
+          </div>
+        </div>
+      </article>
+    </section>
+    <section id="route-privacy" style="display: none">
+      <article id="view-privacy-index" style="display: none"><h3>We value your privacy. Read more:</h3><br/>
+        <button class="link" onclick="link('privacy','rodo')">RODO</button>
+        <button class="link" onclick="link('privacy','frodo')">FRODO</button>
+      </article>
+      <article id="view-privacy-rodo" style="display: none">RODO</article>
+      <article id="view-privacy-frodo" style="display: none">FRODO</article>
+    </section>
+  </main>
+  <footer>Da foota</footer>
+
+  <script src="index.js"></script>
+</body>
+</html>
