@@ -1,3 +1,8 @@
+import privacyIndex from "./views/privacy/index.js";
+
+window.link = link;
+console.log('hello')
+
 const DOMAIN = 'awesome.io';
 const ROUTES = ['home','shop','privacy','notfound'];
 const VIEWS = {
@@ -30,6 +35,8 @@ function link(newRoute = 'home', newView = 'index', newId = '') {
     return;
   }
 
+  const root = document.querySelector('main');
+
   switch(newRoute) {
     case 'shop':
       switch(newView) {
@@ -40,7 +47,14 @@ function link(newRoute = 'home', newView = 'index', newId = '') {
           initDetails(newId);
           break;
       }
-    break;
+      break;
+    case 'privacy':
+      switch(newView) {
+        case 'index':
+          privacyIndex(root);
+          break;
+      }
+      break;
   }
 
   prevPath = path;
