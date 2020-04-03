@@ -80,13 +80,14 @@ async function initShop() {
 
 function fillTable(data) {
   document.getElementById('products-table').querySelector('tbody').innerHTML = data
-  .map((product) => `<tr id="product-${product.id}"><td>${product.city}</td><td>${product.name}</td></tr>`)
-  .reduce((total, el) => total.concat(el),'');
+    .map((product) => `<tr id="product-${product.id}" onclick="link('shop','details','${product.id}')"><td>${product.city}</td><td>${product.name}</td></tr>`)
+    .reduce((total, el) => total.concat(el),'');
 }
 
 async function initDetails(id) {
   const response = await fetch(API);
   const data = await response.json();
+  console.log(data);
   const product = data.find((pr) => `${pr.id}` === id);
 
   const response2 = await fetch(`https://recruitment.hal.skygate.io/incomes/${id}`)
@@ -96,7 +97,7 @@ async function initDetails(id) {
     .map((v) => parseFloat(v))
     .reduce((total, el) => total + el);
 
-  const priceTrunc = 0.01 * Math.round(price * 100);
+  const priceTrunc = price.toFixed(2);
 
   document.getElementById('product-name').innerHTML = product.city;
   document.getElementById('product-brand').innerHTML = product.name;
