@@ -1,4 +1,6 @@
 import privacyIndex from "./views/privacy/index.js";
+import privacyRodo from "./views/privacy/rodo.js";
+import privacyFrodo from "./views/privacy/frodo.js";
 
 window.link = link;
 console.log('hello')
@@ -52,6 +54,12 @@ function link(newRoute = 'home', newView = 'index', newId = '') {
       switch(newView) {
         case 'index':
           privacyIndex(root);
+          break;
+        case 'rodo':
+          privacyRodo(root);
+          break;
+        case 'frodo':
+          privacyFrodo(root);
           break;
       }
       break;
