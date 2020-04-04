@@ -1,6 +1,6 @@
 export default function privacyRodo(root) {
 
-  root.innnerHTML = '';
+  root.innerHTML = '';
 
   const article = document.createElement('article');
   article.setAttribute('id','view-privacy-rodo');
