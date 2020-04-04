@@ -3,6 +3,8 @@ import privacyRodo from "./views/privacy/rodo.js";
 import privacyFrodo from "./views/privacy/frodo.js";
 import notfoundIndex from "./views/notfound/index.js";
 import homeIndex from "./views/index.js";
+import shopIndex from "./views/shop/index.js";
+import shopDetails from "./views/shop/details.js";
 
 window.link = link;
 
@@ -14,7 +16,6 @@ const VIEWS = {
   'shop': ['index', 'details'],
   'privacy': ['index','rodo','frodo']
 };
-const API = 'https://recruitment.hal.skygate.io/companies';
 
 let path = {
   route: 'home',
@@ -44,10 +45,10 @@ function link(newRoute = 'home', newView = 'index', newId = '') {
     case 'shop':
       switch(newView) {
         case 'index':
-          initShop();
+          shopIndex(root);
           break;
         case 'details':
-          initDetails(newId);
+          shopDetails(root, newId);
           break;
       }
       break;
@@ -82,37 +83,4 @@ function displayUrl() {
   const urlView = path.view  === 'index' ? `` : `/${path.view}`;
   const urlId = path.id === '' ? `` : `?id=${path.id}`;
   document.querySelector('.url').innerHTML = `${DOMAIN}/${urlRoute}${urlView}${urlId}`;
-}
-
-async function initShop() {
-  const response = await fetch(API);
-  const data = await response.json();
-  fillTable(data);
-  console.log(data);
-}
-
-function fillTable(data) {
-  document.getElementById('products-table').querySelector('tbody').innerHTML = data
-    .map((product) => `<tr id="product-${product.id}" onclick="link('shop','details','${product.id}')"><td>${product.city}</td><td>${product.name}</td></tr>`)
-    .reduce((total, el) => total.concat(el),'');
-}
-
-async function initDetails(id) {
-  const response = await fetch(API);
-  const data = await response.json();
-  console.log(data);
-  const product = data.find((pr) => `${pr.id}` === id);
-
-  const response2 = await fetch(`https://recruitment.hal.skygate.io/incomes/${id}`)
-  const priceData = await response2.json();
-  const price = priceData.incomes
-    .map((el) => el.value)
-    .map((v) => parseFloat(v))
-    .reduce((total, el) => total + el);
-
-  const priceTrunc = price.toFixed(2);
-
-  document.getElementById('product-name').innerHTML = product.city;
-  document.getElementById('product-brand').innerHTML = product.name;
-  document.getElementById('product-price').innerHTML = `${priceTrunc} $`;
 }
