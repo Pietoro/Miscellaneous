@@ -8,7 +8,8 @@ export default async function shopIndex(root) {
   article.setAttribute('id','view-shop-index');
   article.innerHTML = 
     `<h3>This is a shop</h3>
-      <table id="products-table">
+    <button onclick="link('shop','details','777')">Click me</button>
+    <table id="products-table">
       <thead>
         <tr>
           <th>Product</th>

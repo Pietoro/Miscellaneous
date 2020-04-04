@@ -1,3 +1,5 @@
+import notfoundIndex from "../notfound/index.js";
+
 const API = 'https://recruitment.hal.skygate.io/companies';
 const API_DETAILS = 'https://recruitment.hal.skygate.io/incomes/';
 
@@ -24,17 +26,26 @@ article.innerHTML = `
   const response = await fetch(API);
   const data = await response.json();
   const product = data.find((pr) => `${pr.id}` === id);
+  if(product === undefined) {
+    notfoundIndex(root,{route: 'shop', view: 'index', id: ''});
+    return;
+  }
 
   const response2 = await fetch(API_DETAILS + id);
-  const priceData = await response2.json();
-  const price = priceData.incomes
+  try {
+    const priceData = await response2.json();
+    const price = priceData.incomes
     .map((el) => el.value)
     .map((v) => parseFloat(v))
     .reduce((total, el) => total + el);
 
-  const priceTrunc = price.toFixed(2);
+    const priceTrunc = price.toFixed(2);
 
-  document.getElementById('product-name').innerHTML = product.city;
-  document.getElementById('product-brand').innerHTML = product.name;
-  document.getElementById('product-price').innerHTML = `${priceTrunc} $`;
+    document.getElementById('product-name').innerHTML = product.city;
+    document.getElementById('product-brand').innerHTML = product.name;
+    document.getElementById('product-price').innerHTML = `${priceTrunc} $`
+  } catch(e) {
+    notfoundIndex(root,{route: 'shop', view: 'index', id: ''});
+    return;
+  }
 }
