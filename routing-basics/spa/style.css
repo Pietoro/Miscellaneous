@@ -152,3 +152,29 @@ tr:hover {
 .btn-add {
   background: linear-gradient(rgba(41,184,229,1) 0%, rgba(188,224,238,1) 100%);
 }
+
+#txt-filter {
+  height: 40px;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 18px;
+}
+
+#txt-filter:focus {
+  border-color: hsl(180,70%,30%);
+  border-radius: 5px;
+}
+
+#btn-clear-filter {
+  height: 40px;
+  background-color: hsl(180,70%,30%);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0 15px;
+  font-size: 18px;
+}
+
+.shop-filter-container {
+  padding: 20px;
+}
