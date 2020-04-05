@@ -101,6 +101,15 @@ th {
   width: 500px;
 }
 
+#products-header {
+  cursor: pointer;
+  user-select: none;
+}
+
+#products-header:hover {
+  background-color: hsl(180,70%,27%);
+}
+
 td {
   width: 500px;
   height: 50px;
