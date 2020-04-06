@@ -20,9 +20,31 @@ body {
   background-color: hsl(0,0%,85%);
 }
 
+.link {
+  border: none;
+  background-color: transparent;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+}
+
 header {
   padding-top: 20px;
   padding-bottom: 20px;
+  position: relative;
+}
+
+.prev-route {
+  box-sizing: border-box;
+  position: absolute;
+  left: 20px;
+  background-color: hsl(0,0%,50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: white;
+  font-weight: bold;
+  font-size: 28px;
+  font-family: monospace;
 }
 
 .url {
@@ -41,13 +63,6 @@ nav {
   padding-top: 40px;
   padding-bottom: 40px;
   background-color: hsl(180,70%,30%);
-}
-
-.link {
-  border: none;
-  background-color: transparent;
-  font-family: 'Montserrat', sans-serif;
-  cursor: pointer;
 }
 
 nav > .link {

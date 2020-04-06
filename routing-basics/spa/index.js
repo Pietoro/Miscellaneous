@@ -29,6 +29,8 @@ let prevPath = {
   id: ''
 };
 
+document.getElementById('prev-route').onclick = () => link(prevPath.route, prevPath.view, prevPath.id);
+
 function link(newRoute = 'home', newView = 'index', newId = '') {
 
   const root = document.querySelector('main');
