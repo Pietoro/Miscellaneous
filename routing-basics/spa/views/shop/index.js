@@ -52,12 +52,18 @@ export default async function shopIndex(root) {
     const response = await fetch(API);
     let data = await response.json();
     
-    let pagesCount = Math.ceil(data.length / productsOnPage);
+    let pagesCount = calculatePagesCount(data, filterInput, productsOnPage);
+    document.getElementById('pages-count').innerHTML = pagesCount;
+    document.getElementById('current-page').innerHTML = currentPage + 1;
 
     fillTable(data, filterInput, sortAsc, productsOnPage, currentPage);
 
     document.getElementById('txt-filter').oninput = (ev) => {
       filterInput = ev.target.value;
+      pagesCount = calculatePagesCount(data, filterInput, productsOnPage);
+      document.getElementById('pages-count').innerHTML = pagesCount;
+      currentPage = 0;
+      document.getElementById('current-page').innerHTML = currentPage + 1;
       fillTable(data,filterInput, sortAsc, productsOnPage, currentPage);
     };
     
@@ -77,13 +83,28 @@ export default async function shopIndex(root) {
     [...document.querySelectorAll('input[name="pagination"]')].forEach((el) => {
       el.onchange = () => {
         productsOnPage = document.querySelector('input[name="pagination"]:checked').value;
+        currentPage = 0;
+        pagesCount = calculatePagesCount(data, filterInput, productsOnPage);
+        document.getElementById('pages-count').innerHTML = pagesCount;
+        document.getElementById('current-page').innerHTML = currentPage + 1;
         fillTable(data, filterInput, sortAsc, productsOnPage, currentPage);
       };
     });
 
     document.getElementById('next-page').onclick = () => {
-      currentPage++;
-      fillTable(data, filterInput, sortAsc, productsOnPage, currentPage)
+      if(currentPage < pagesCount - 1) {
+        currentPage++;
+        document.getElementById('current-page').innerHTML = currentPage + 1;
+        fillTable(data, filterInput, sortAsc, productsOnPage, currentPage);
+      }
+    }
+
+    document.getElementById('prev-page').onclick = () => {
+      if(currentPage >= 1) {
+        currentPage--;
+        document.getElementById('current-page').innerHTML = currentPage + 1;
+        fillTable(data, filterInput, sortAsc, productsOnPage, currentPage);
+      }
     }
     
     data = await Promise.all(data.map(async (product) => ({...product, price: await getPrices(product.id)})));
@@ -129,4 +150,9 @@ async function getPrices(id) {
   } catch(e) {
     return undefined;
   }
+}
+
+function calculatePagesCount(data, filterInput, productsOnPage) {
+  const filteredData = data.filter((product) => product.city.toLowerCase().includes(filterInput.toLowerCase()));
+  return Math.ceil(filteredData.length / productsOnPage);
 }
