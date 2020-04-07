@@ -7,13 +7,15 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header><button class="link prev-route" id="prev-route">←</button><div class="url">awesome.io/</div></header>
-  <nav>
-    <button class="link" id="link-home" onclick="link()">Home</button>
-    <button class="link" id="link-shop" onclick="link('shop')">Shop</button>
-    <button class="link" id="link-privacy" onclick="link('privacy')">Privacy</button>
-    <button class="link" id="link-badlink" onclick="link('badlink')">Bad link</button>
-  </nav>
+  <div class="sticky">
+    <header><button class="link prev-route" id="prev-route">←</button><div class="url">awesome.io/</div></header>
+    <nav>
+      <button class="link" id="link-home" onclick="link()">Home</button>
+      <button class="link" id="link-shop" onclick="link('shop')">Shop</button>
+      <button class="link" id="link-privacy" onclick="link('privacy')">Privacy</button>
+      <button class="link" id="link-badlink" onclick="link('badlink')">Bad link</button>
+    </nav>
+  </div>
   <main>
     <section id="route-home">
       <article id="view-home-index"><h3>This is home page</h3></article>
