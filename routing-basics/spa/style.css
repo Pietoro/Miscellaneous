@@ -106,8 +106,8 @@ article > .link:hover {
   border-radius: 5px;
   padding-bottom: 15px;
   margin: 5px 5px 0 5px;
+  transition: opacity 1s;
 }
-
 
 main {
   min-height: 500px;
