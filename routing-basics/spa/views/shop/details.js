@@ -1,4 +1,5 @@
 import notfoundIndex from "../notfound/index.js";
+import showNotification from "../../popups/notifications.js";
 
 const API = 'https://recruitment.hal.skygate.io/companies';
 const API_DETAILS = 'https://recruitment.hal.skygate.io/incomes/';
@@ -16,8 +17,8 @@ article.innerHTML = `
       <div id="product-price"></div>
     </div>
     <div class="btn-shop-container">
-      <button class="link btn-shop">Buy</button>
-      <button class="link btn-shop btn-add">Add to cart</button>
+      <button class="link btn-shop" id="btn-buy">Buy</button>
+      <button class="link btn-shop btn-add" id="btn-add">Add to cart</button>
     </div>
   </div>`;
 
@@ -48,4 +49,6 @@ article.innerHTML = `
     notfoundIndex(root,{route: 'shop', view: 'index', id: ''});
     return;
   }
+
+  document.getElementById('btn-add').onclick = () => showNotification('head',product.name);
 }

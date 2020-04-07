@@ -94,6 +94,21 @@ article > .link:hover {
   color: hsl(50,80%,40%);
 }
 
+.notifications {
+  width: 300px;
+  position: absolute;
+  right: 0;
+}
+
+.notification-box {
+  background-color: cadetblue;
+  border: 2px solid hsl(0,0%,30%);
+  border-radius: 5px;
+  padding-bottom: 15px;
+  margin: 5px 5px 0 5px;
+}
+
+
 main {
   min-height: 500px;
   padding: 40px 20px;
