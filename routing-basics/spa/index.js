@@ -5,16 +5,18 @@ import notfoundIndex from "./views/notfound/index.js";
 import homeIndex from "./views/index.js";
 import shopIndex from "./views/shop/index.js";
 import shopDetails from "./views/shop/details.js";
+import cartIndex from "./views/cart/index.js";
 
 window.link = link;
 
 const DOMAIN = 'awesome.io';
-const ROUTES = ['home','shop','privacy','notfound'];
+const ROUTES = ['home','shop','privacy','notfound','cart'];
 const VIEWS = {
   'notfound': ['index'],
   'home': ['index'],
   'shop': ['index', 'details'],
-  'privacy': ['index','rodo','frodo']
+  'privacy': ['index','rodo','frodo'],
+  'cart': ['index']
 };
 
 let path = {
@@ -66,6 +68,9 @@ function link(newRoute = 'home', newView = 'index', newId = '') {
           privacyFrodo(root);
           break;
       }
+      break;
+    case 'cart':
+      cartIndex(root);
       break;
     }
 

@@ -31,7 +31,7 @@ export default async function shopIndex(root) {
       <span id="pages-count">2</span>
       <button class="link page-nav" id="next-page">&#707;</button>
     </div>
-    <table id="products-table">
+    <table id="products-table" class="products-table">
       <thead>
         <tr>
           <th id="products-header">Product<span style="float:right"><span id="sort-desc" style="display: none">˄</span><span id="sort-asc">˅</span></span></th>

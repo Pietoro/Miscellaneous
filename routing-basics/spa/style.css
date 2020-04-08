@@ -126,13 +126,13 @@ table {
   margin-right: auto;
 }
 
-table, th, tr, td {
+.products-table, .products-table th, .products-table tr, .products-table td {
   border: 2px solid white;
   border-collapse: collapse;
   padding: 10px 50px;
 }
 
-th {
+.products-table th {
   background-color: hsl(180,70%,30%);
   color: white;
   cursor: auto;
@@ -148,12 +148,12 @@ th {
   background-color: hsl(180,70%,27%);
 }
 
-td {
+.products-table td {
   width: 500px;
   height: 50px;
 }
 
-tr:hover {
+.products-table tr:hover {
   background-color: hsl(0,0%,65%);
   cursor: pointer;
 }
@@ -280,4 +280,27 @@ input[type="radio"] + label {
 
 .page-nav:hover {
   color: hsl(50,80%,45%)
+}
+
+.cart-table {
+  border-collapse: collapse;
+  margin-bottom: 50px;
+  text-align: left;
+}
+
+.cart-table th {
+  border-bottom: 2px solid hsl(0,0%,30%);
+  padding: 5px 20px;
+}
+
+.cart-table thead :first-child {
+  width: 500px;
+}
+
+.cart-table thead :nth-child(2) {
+  width: 200px;
+}
+
+.cart-table thead :nth-child(3) {
+  width: 200px;
 }
