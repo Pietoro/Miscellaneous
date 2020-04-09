@@ -136,7 +136,7 @@ function compareStrings(string1, string2, ascending) {
   return 0;
 }
 
-async function getPrices(id) {
+export async function getPrices(id) {
   const response2 = await fetch(API_DETAILS + id);
   try {
     const priceData = await response2.json();

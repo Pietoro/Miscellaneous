@@ -304,3 +304,19 @@ input[type="radio"] + label {
 .cart-table thead :nth-child(3) {
   width: 200px;
 }
+
+.cart-table td {
+  border-bottom: 2px solid hsl(0,0%,75%);
+  padding: 10px 20px;
+}
+
+.btn-cart {
+  border: none;
+  padding: 10px 10px;
+  min-width: 150px;
+  border-radius: 5px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  margin: 10px 20px;
+  box-shadow: 3px 3px 3px hsl(0,0%,50%);
+}
