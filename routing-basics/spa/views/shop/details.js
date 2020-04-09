@@ -1,5 +1,5 @@
 import notfoundIndex from "../notfound/index.js";
-import showNotification from "../../popups/notifications.js";
+import {addToCart} from "../../cart.js";
 
 const API = 'https://recruitment.hal.skygate.io/companies';
 const API_DETAILS = 'https://recruitment.hal.skygate.io/incomes/';
@@ -51,5 +51,5 @@ article.innerHTML = `
     return;
   }
 
-  document.getElementById('btn-add').onclick = () => showNotification('head',product.name);
+  document.getElementById('btn-add').onclick = () => addToCart(product);
 }

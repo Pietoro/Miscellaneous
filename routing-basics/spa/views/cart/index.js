@@ -1,4 +1,5 @@
 import {getPrices} from '../shop/index.js';
+import { clearCart, getCartContent } from '../../cart.js';
 
 let cartContent = [
   // {
@@ -36,13 +37,14 @@ export default function cartIndex(root) {
 
   root.appendChild(article);
 
-  cartContent = JSON.parse(localStorage.getItem('cartContent'));
+  cartContent = getCartContent();
 
   if(cartContent.length === 0) {
     emptyCart(article);
   } else {
     fullCart(article);
   }
+
 }
 
 function emptyCart(article) {
@@ -66,14 +68,17 @@ function fullCart(article) {
       
       </tbody>
     </table>
-    <button class="btn-cart clear-cart">Clear cart</button>
+    <button class="btn-cart clear-cart" id="clear-cart">Clear cart</button>
     <button class="btn-cart continue-cart">Continue shopping</button>
     <button class="btn-cart buy-cart">Buy</button>
   `;
 
   fillCartTable();
-
-  //localStorage.setItem('cartContent', JSON.stringify(cartContent));
+  document.getElementById('clear-cart').onclick = () => {
+    clearCart();
+    emptyCart(article);
+  };
+  
 }
 
 async function fillCartTable() {
@@ -92,7 +97,7 @@ async function fillCartTable() {
   document.getElementById('cart-table').querySelector('tbody').innerHTML = cartTableData
     .map((content) => `
       <tr>
-        <td><b>${content.product.name}</b> by ${content.product.brand}</td>
+        <td><b>${content.product.city}</b> by ${content.product.name}</td>
         <td>${content.count}</td>
         <td>${content.product.price}$</td>
         <td>${content.product.price * content.count}$</td>

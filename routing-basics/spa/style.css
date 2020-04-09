@@ -310,6 +310,10 @@ input[type="radio"] + label {
   padding: 10px 20px;
 }
 
+.cart-table tbody :last-child td {
+  border-bottom: none;
+}
+
 .btn-cart {
   border: none;
   padding: 10px 10px;
