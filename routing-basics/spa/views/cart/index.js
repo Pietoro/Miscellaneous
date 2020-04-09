@@ -1,30 +1,30 @@
 import {getPrices} from '../shop/index.js';
 
 let cartContent = [
-  {
-    count: 2,
-    product: { 
-      id: 298,
-      name: 'Alten',
-      brand: 'Botsford'
-    }
-  },
-  {
-    count: 1,
-    product: { 
-      id: 180,
-      name: 'Ankan',
-      brand: 'Tremb'
-    }
-  },
-  {
-    count: 1,
-    product: { 
-      id: 248,
-      name: 'Casper',
-      brand: 'Balthazar'
-    }
-  }
+  // {
+  //   count: 2,
+  //   product: { 
+  //     id: 298,
+  //     name: 'Alten',
+  //     brand: 'Botsford'
+  //   }
+  // },
+  // {
+  //   count: 1,
+  //   product: { 
+  //     id: 180,
+  //     name: 'Ankan',
+  //     brand: 'Tremb'
+  //   }
+  // },
+  // {
+  //   count: 1,
+  //   product: { 
+  //     id: 248,
+  //     name: 'Casper',
+  //     brand: 'Balthazar'
+  //   }
+  // }
 ];
 
 export default function cartIndex(root) {
@@ -35,6 +35,8 @@ export default function cartIndex(root) {
   article.setAttribute('id', 'view-cart-index');
 
   root.appendChild(article);
+
+  cartContent = JSON.parse(localStorage.getItem('cartContent'));
 
   if(cartContent.length === 0) {
     emptyCart(article);
@@ -70,6 +72,8 @@ function fullCart(article) {
   `;
 
   fillCartTable();
+
+  //localStorage.setItem('cartContent', JSON.stringify(cartContent));
 }
 
 async function fillCartTable() {
