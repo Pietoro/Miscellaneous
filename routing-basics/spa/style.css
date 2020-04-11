@@ -324,3 +324,58 @@ input[type="radio"] + label {
   margin: 10px 20px;
   box-shadow: 3px 3px 3px hsl(0,0%,50%);
 }
+
+.alert {
+  opacity: 100%;
+  width: inherit;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+}
+
+.alert-bg {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 50%;
+}
+
+.alert-box {
+  box-sizing: border-box;
+  width: 350px;
+  background-color: white;
+  border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 28px;
+  border: 1px solid hsl(0,0%,30%);
+}
+
+.alert-box > h3 {
+  background-color: hsl(180,70%,27%);
+  color: white;
+  margin-top: 0;
+  padding: 5px 0;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.btn-alert-container {
+  padding: 20px 0;
+}
+
+.btn-alert-ok {
+  border: none;
+  background-color: hsl(50,80%,50%);
+  padding: 5px 15px;
+  border-radius: 3px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.btn-alert-ok:hover {
+  background-color: hsl(50,80%,55%);
+}
