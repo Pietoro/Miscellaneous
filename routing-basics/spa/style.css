@@ -366,15 +366,24 @@ input[type="radio"] + label {
   padding: 20px 0;
 }
 
-.btn-alert-ok {
+.btn-alert {
   border: none;
   background-color: hsl(50,80%,50%);
   padding: 5px 15px;
   border-radius: 3px;
   font-size: 18px;
   cursor: pointer;
+  margin: auto 10px;
 }
 
-.btn-alert-ok:hover {
+.btn-alert:hover {
   background-color: hsl(50,80%,55%);
+}
+
+.btn-alert-no {
+  background-color: hsl(0,0%,60%);
+}
+
+.btn-alert-no:hover {
+  background-color: hsl(0,0%,65%);
 }
