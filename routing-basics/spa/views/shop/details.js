@@ -1,6 +1,7 @@
 import notfoundIndex from "../notfound/index.js";
 import {addToCart} from "../../cart.js";
 import showAlert from "../../popups/alerts.js"
+import showNotification from "../../popups/notifications.js";
 
 const API = 'https://recruitment.hal.skygate.io/companies';
 const API_DETAILS = 'https://recruitment.hal.skygate.io/incomes/';
@@ -53,5 +54,9 @@ article.innerHTML = `
   }
 
   document.getElementById('btn-add').onclick = () => addToCart(product);
-  document.getElementById('btn-buy').onclick = () => showAlert('Product purchase','Are you sure you want buy this product?');
+  document.getElementById('btn-buy').onclick = () => 
+    showAlert(
+      'Product purchase',
+      'Are you sure you want buy this product?', 
+      () => showNotification('Congratulations',`You have bought ${product.city}`));
 }

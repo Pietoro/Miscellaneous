@@ -1,4 +1,4 @@
-export default function showAlert(header, text) {
+export default function showAlert(header, text, onOk = () => {}) {
 
   const alert = document.createElement('aside');
   alert.setAttribute('id','alert');
@@ -26,5 +26,8 @@ export default function showAlert(header, text) {
   alertBox.appendChild(alertBtnContainer);
   alertBtnContainer.appendChild(btnOk);
 
-  btnOk.onclick = () => document.querySelector('body').removeChild(alert);
+  btnOk.onclick = () => {
+    document.querySelector('body').removeChild(alert);
+    onOk();
+  }
 }

@@ -6,6 +6,7 @@ import homeIndex from "./views/index.js";
 import shopIndex from "./views/shop/index.js";
 import shopDetails from "./views/shop/details.js";
 import cartIndex from "./views/cart/index.js";
+import showAlert from "./popups/alerts.js";
 
 window.link = link;
 
@@ -30,6 +31,8 @@ let prevPath = {
   view: 'index',
   id: ''
 };
+
+showAlert('We do not use cookies','We only use local storage');
 
 document.getElementById('prev-route').onclick = () => link(prevPath.route, prevPath.view, prevPath.id);
 

@@ -101,9 +101,8 @@ article > .link:hover {
 }
 
 .notification-box {
-  background-color: cadetblue;
-  border: 2px solid hsl(0,0%,30%);
-  border-radius: 5px;
+  background-color: white;
+  border: 1px solid hsl(0,0%,30%);
   padding-bottom: 15px;
   margin: 5px 5px 0 5px;
   transition: opacity 1s;
