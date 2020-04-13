@@ -292,15 +292,11 @@ input[type="radio"] + label {
   padding: 5px 20px;
 }
 
-.cart-table thead :first-child {
+.head-product {
   width: 500px;
 }
 
-.cart-table thead :nth-child(2) {
-  width: 200px;
-}
-
-.cart-table thead :nth-child(3) {
+.head-amount, .head-price, .head-total {
   width: 200px;
 }
 
@@ -322,6 +318,10 @@ input[type="radio"] + label {
   font-size: 18px;
   margin: 10px 20px;
   box-shadow: 3px 3px 3px hsl(0,0%,50%);
+}
+
+.btn-cart:hover {
+  background-color: hsl(50,80%,55%);
 }
 
 .alert {
@@ -386,4 +386,22 @@ input[type="radio"] + label {
 
 .btn-alert-no:hover {
   background-color: hsl(0,0%,65%);
+}
+
+.btn-cart-change {
+  float: right;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 3px;
+  background-color: hsl(0,0%,80%);
+  margin-right: 15px;
+  width: 30px;
+}
+
+.btn-cart-rmv {
+  font-size: 20px;
+  font-weight: bold;
+}
+.btn-cart-rmv:hover {
+  color: red;
 }
