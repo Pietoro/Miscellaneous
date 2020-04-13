@@ -29,7 +29,7 @@ article.innerHTML = `
   const response = await fetch(API);
   const data = await response.json();
   const product = data.find((pr) => `${pr.id}` === id);
-  console.log(product);
+  
   if(product === undefined) {
     notfoundIndex(root,{route: 'shop', view: 'index', id: ''});
     return;

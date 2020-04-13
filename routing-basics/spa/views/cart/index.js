@@ -133,8 +133,6 @@ async function fillCartTable() {
    </tr>`
 
    cartTableData.forEach((content, index) => {
-    console.log(content);
-    console.log(index);
     document.getElementById(`btn-remove-${index}`).onclick = () => {
       removeFromCart(content.product);
       cartContent = getCartContent();

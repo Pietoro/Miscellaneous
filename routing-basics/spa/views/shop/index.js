@@ -113,18 +113,21 @@ export default async function shopIndex(root) {
 }
 
 function fillTable(data, filterInput, sortAsc, productsOnPage, currentPage) {
-  document.getElementById('products-table').querySelector('tbody').innerHTML = data
-    .filter((product) => product.city.toLowerCase().includes(filterInput.toLowerCase()))
-    .sort((product1,product2) => compareStrings(product1.city, product2.city, sortAsc))
-    .slice(productsOnPage * currentPage, productsOnPage * currentPage + productsOnPage)
-    .map((product) => 
-      `<tr id="product-${product.id}" 
-      onclick="link('shop','details','${product.id}')">
-      <td>${product.city}</td>
-      <td>${product.name}</td>
-      <td>${product.price === undefined ? '' : product.price}</td>
-      </tr>`)
-    .reduce((total, el) => total.concat(el),'');
+  const productsTable = document.getElementById('products-table');
+  if(productsTable) {
+    productsTable.querySelector('tbody').innerHTML = data
+      .filter((product) => product.city.toLowerCase().includes(filterInput.toLowerCase()))
+      .sort((product1,product2) => compareStrings(product1.city, product2.city, sortAsc))
+      .slice(productsOnPage * currentPage, productsOnPage * currentPage + productsOnPage)
+      .map((product) => 
+        `<tr id="product-${product.id}" 
+        onclick="link('shop','details','${product.id}')">
+        <td>${product.city}</td>
+        <td>${product.name}</td>
+        <td>${product.price === undefined ? '' : product.price}</td>
+        </tr>`)
+      .reduce((total, el) => total.concat(el),'');
+  }
 }
 
 function compareStrings(string1, string2, ascending) {

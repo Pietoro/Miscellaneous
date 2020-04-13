@@ -402,6 +402,7 @@ input[type="radio"] + label {
   font-size: 20px;
   font-weight: bold;
 }
+
 .btn-cart-rmv:hover {
   color: red;
 }
