@@ -39,4 +39,29 @@ router.post('/', (request, response) => {
     });
 });
 
+//DELETE
+router.delete('/:unitId', async (request, response) => {
+  try {
+  const removedUnit = await Unit.remove({_id: request.params.unitId});
+  response.json(removedUnit);
+  } catch(err) {
+    response.json({message: err});
+  }
+});
+
+//UPDATE
+router.patch('/:unitId', async (request, response) => {
+  try {
+  const updatedUnit = await Unit.updateOne(
+    {_id: request.params.unitId},
+    {$set: {
+      name: request.body.name,
+      job: request.body.job }
+    });
+  response.json(updatedUnit);
+  } catch(err) {
+    response.json({message: err});
+  }
+});
+
 module.exports = router;

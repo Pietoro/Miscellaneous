@@ -1,16 +1,18 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
-const app = express();
+const cors = require('cors');
 require('dotenv/config');
 const unitsRoutes = require('./routes/units');
-const bodyParser = require('body-parser');
+
+const app = express();
 
 const PORT = process.env.PORT || 3000;
 
 // Middlewares
-
-app.use(bodyParser.json());
+app.use(cors());
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use('/posts', (request, response, next) => {
