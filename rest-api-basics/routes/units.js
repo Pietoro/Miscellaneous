@@ -56,7 +56,11 @@ router.patch('/:unitId', async (request, response) => {
     {_id: request.params.unitId},
     {$set: {
       name: request.body.name,
-      job: request.body.job }
+      job: request.body.job,
+      race: request.body.race,
+      equipment: request.body.equipment,
+      level: request.body.level
+    }
     });
   response.json(updatedUnit);
   } catch(err) {
