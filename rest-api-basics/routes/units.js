@@ -6,18 +6,18 @@ const Unit = require('../models/Unit');
 router.get('/', async (request, response) => {
   try {
     const units = await Unit.find();
-    response.json(units);
+    response.status(200).json(units);
   } catch(err) {
-    response.json({message:err});
+    response.status(404).json({message:err});
   }
 });
 
 router.get('/:unitId', async (request, response) => {
   try {
     const unit = await Unit.findById(request.params.unitId);
-    response.json(unit);
+    response.status(200).json(unit);
   } catch(err) {
-    response.json({message: err});
+    response.status(404).json({message: err});
   }
 });
 
@@ -33,9 +33,9 @@ router.post('/', (request, response) => {
   console.log(unit);
   
   unit.save()
-    .then(data => response.json(data))
+    .then(data => response.status(201).json(data))
     .catch(err => {
-      response.json({ message: err})
+      response.status(400).json({ message: err})
     });
 });
 
@@ -43,9 +43,9 @@ router.post('/', (request, response) => {
 router.delete('/:unitId', async (request, response) => {
   try {
   const removedUnit = await Unit.remove({_id: request.params.unitId});
-  response.json(removedUnit);
+  response.status(200).json(removedUnit);
   } catch(err) {
-    response.json({message: err});
+    response.status(400).json({message: err});
   }
 });
 
@@ -57,14 +57,13 @@ router.patch('/:unitId', async (request, response) => {
     {$set: {
       name: request.body.name,
       job: request.body.job,
-      race: request.body.race,
       equipment: request.body.equipment,
       level: request.body.level
     }
     });
-  response.json(updatedUnit);
+  response.status(200).json(updatedUnit);
   } catch(err) {
-    response.json({message: err});
+    response.status(400).json({message: err});
   }
 });
 
