@@ -42,7 +42,7 @@ router.post('/', (request, response) => {
 //DELETE
 router.delete('/:unitId', async (request, response) => {
   try {
-  const removedUnit = await Unit.remove({_id: request.params.unitId});
+  const removedUnit = await Unit.deleteOne({_id: request.params.unitId});
   response.status(200).json(removedUnit);
   } catch(err) {
     response.status(400).json({message: err});
@@ -57,7 +57,7 @@ router.patch('/:unitId', async (request, response) => {
     {$set: {
       name: request.body.name,
       job: request.body.job,
-      equipment: request.body.equipment,
+      //equipment: request.body.equipment,
       level: request.body.level
     }
     });
