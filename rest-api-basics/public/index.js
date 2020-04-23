@@ -1,4 +1,5 @@
 const API = '/api/units';
+const API_RACES = '/api/races';
 
 fillUnitsList();
 
@@ -21,7 +22,7 @@ async function fillUnitsList() {
         `<li onclick="editUnitForm('${unit._id}')">
           ${unit.name}
           <ul>
-            <li>${unit.race}</li>
+            <li>${unit.race.name}</li>
             <li>${unit.job}</li>
             <li>${unit.level}</li>
             <li>${unit.equipment}</li>
@@ -56,7 +57,11 @@ async function addUnit(event) {
   }
 }
 
-function newUnitForm() {
+async function newUnitForm() {
+
+  const response = await fetch(API_RACES);
+  const raceData = await response.json();
+  console.log(raceData);
 
   document.getElementById('form-container').innerHTML = `
     <form id="form-add-unit">
@@ -66,7 +71,11 @@ function newUnitForm() {
       </div>
       <div class="form">
         <label for="unitRace">Race</label>
-        <input type="text" name="unitRace">
+        <select name="unitRace">
+          ${raceData.map((race) => 
+            `<option value="${race._id}">${race.name}</option>` 
+          )}
+        </select>
       </div>
       <div class="form">
         <label for="unitJob">Job</label>

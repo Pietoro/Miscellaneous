@@ -4,6 +4,7 @@ const path = require('path');
 const cors = require('cors');
 require('dotenv/config');
 const unitsRoutes = require('./routes/units');
+const racesRoutes = require('./routes/races');
 
 const app = express();
 
@@ -27,7 +28,9 @@ app.get('/', (request, response) => {
 });
 
 app.use('/api/units', unitsRoutes);
-// Connext to db
+app.use('/api/races', racesRoutes)
+
+// Connect to db
 console.log(process.env.DB_CONNECTION)
 mongoose.connect(
   process.env.DB_CONNECTION,

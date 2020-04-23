@@ -5,7 +5,7 @@ const Unit = require('../models/Unit');
 //GET
 router.get('/', async (request, response) => {
   try {
-    const units = await Unit.find();
+    const units = await Unit.find().populate('race','name');
     response.status(200).json(units);
   } catch(err) {
     response.status(404).json({message:err});
@@ -14,7 +14,7 @@ router.get('/', async (request, response) => {
 
 router.get('/:unitId', async (request, response) => {
   try {
-    const unit = await Unit.findById(request.params.unitId);
+    const unit = await Unit.findById(request.params.unitId).populate('race','name');
     response.status(200).json(unit);
   } catch(err) {
     response.status(404).json({message: err});

@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const UnitSchema = mongoose.Schema({
   name: {
@@ -6,7 +7,8 @@ const UnitSchema = mongoose.Schema({
     required: true 
   },
   race: {
-    type: String,
+    type: ObjectId,
+    ref: 'Races',
     required: true
   },
   job: {
